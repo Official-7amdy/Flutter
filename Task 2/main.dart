@@ -20,31 +20,31 @@ void main() {
 
     switch (choice) {
       case 1:
-        NumberCheck().checkNumber();
+        Functions().checkNumber();
         break;
       case 2:
-        SumOfNumbers().calculateSum();
+        Functions().calculateSum();
         break;
       case 3:
-        DigitCounter().countDigits();
+        Functions().countDigits();
         break;
       case 4:
-        NumberReverser().reverseNumber();
+        Functions().reverseNumber();
         break;
       case 5:
-        PowerCalculator().calculatePower();
+        Functions().calculatePower();
         break;
       case 6:
-        SimpleCalculator().calculate();
+        Functions().calculate();
         break;
       case 7:
-        LargestSmallestFinder().findLargestSmallest();
+        Functions().findLargestSmallest();
         break;
       case 8:
-        EvenNumbers().displayEvenNumbers();
+        Functions().displayEvenNumbers();
         break;
       case 9:
-        FactorialCalculator().calculateFactorial();
+        Functions().calculateFactorial();
         break;
       case 0:
         exit(0);
