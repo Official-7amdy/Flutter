@@ -74,14 +74,14 @@ String getMessage() {
             children: [
               
               const SizedBox(
-                height: 40,
+                height: 20,
               ),
               
               Container(
-                decoration:BoxDecoration(shape: BoxShape.rectangle,color: AppColors.accent,borderRadius: BorderRadius.circular(20)
+                decoration:BoxDecoration(shape: BoxShape.rectangle,color: AppColors.secondry,borderRadius: BorderRadius.circular(20)
                 
                 ),
-                height: MediaQuery.sizeOf(context).height / 2,
+                height: MediaQuery.sizeOf(context).height / 1.5,
                   
             
             
@@ -154,12 +154,12 @@ String getMessage() {
              
               ),
               const SizedBox(
-                height: 120,
+                height: 35,
               ),
               Row(
                 children: [
                   Expanded(child: SizedBox(
-                    height: 70,
+                    height: MediaQuery.sizeOf(context).width / 6,
                     
                     child: ElevatedButton(onPressed: (){
                        Navigator.of(context).pop(MaterialPageRoute(

@@ -332,7 +332,10 @@ class _HomeViewState extends State<HomeView> {
                                 result: res,
                               )));
                     },
-                    child: const Text('Calculate')))
+                    child: const Text('Calculate',style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600
+                    ),)))
           ],
         ),
       ),
