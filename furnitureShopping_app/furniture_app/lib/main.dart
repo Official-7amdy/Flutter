@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:furniture_app/myCart_view.dart';
-import 'package:furniture_app/product_view.dart';
+import 'package:furniture_app/Views/myCart_view.dart';
+import 'package:furniture_app/Views/product_view.dart';
+import 'package:furniture_app/Views/splash_view.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,9 +12,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:ProductView()
+      home:SplashView()
       
     );
   }

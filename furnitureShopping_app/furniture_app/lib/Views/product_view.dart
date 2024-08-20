@@ -38,7 +38,7 @@ class ProductView extends StatefulWidget{
                   ),
                   Column(
                     children: [
-                       SizedBox(
+                       const SizedBox(
                     height:15,
                   ),
                    Padding(
