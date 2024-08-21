@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:furniture_app/Views/loginView.dart';
 import 'package:furniture_app/core/PublicWidgets/loading.dart';
 
 class SignupView extends StatefulWidget {
-  SignupView({super.key});
+  const SignupView({super.key});
 
   @override
   State<SignupView> createState() => _SignupViewState();
 }
 
 class _SignupViewState extends State<SignupView> {
+  late String pass;
   final _formKey = GlobalKey<FormState>();
 
   final ScrollController _scrollController = ScrollController();
@@ -46,7 +48,7 @@ class _SignupViewState extends State<SignupView> {
                   height: MediaQuery.sizeOf(context).height / 5,
                 ), // Adds space from the top
                 const Text(
-                  "Hello!",
+                  "SignUp",
                   style: TextStyle(
                     fontSize: 35,
                     color: Colors.black54,
@@ -54,7 +56,7 @@ class _SignupViewState extends State<SignupView> {
                   ),
                 ),
                 const Text(
-                  "Welcome Back",
+                  "Welcome ",
                   style: TextStyle(
                     fontSize: 45,
                     color: Colors.black,
@@ -62,13 +64,31 @@ class _SignupViewState extends State<SignupView> {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.sizeOf(context).height / 9,
+                  height: MediaQuery.sizeOf(context).height / 15,
                 ),
-                // Email field
+                // UserName field
                 TextFormField(
                   decoration: const InputDecoration(
+                    labelText: "Name",
+                     border:  OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),),
+                    prefixIcon: Icon(Icons.person),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your email';
+                    }
+                    return null;
+                  },
+                  onTap: _scrollToBottom,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),TextFormField(
+                  decoration: const InputDecoration(
                     labelText: "Email",
-                    border: OutlineInputBorder(),
+                     border:  OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),),
                     prefixIcon: Icon(Icons.email),
                   ),
                   validator: (value) {
@@ -82,6 +102,8 @@ class _SignupViewState extends State<SignupView> {
                 const SizedBox(
                   height: 20,
                 ),
+               
+               
                 // Password field
                 TextFormField(
                   obscureText: !_isPasswordVisible,
@@ -108,6 +130,39 @@ class _SignupViewState extends State<SignupView> {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your password';
                     }
+                    pass=value;
+                    return null;
+                  },
+                  onTap: _scrollToBottom,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  obscureText: !_isPasswordVisible,
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.password_outlined),
+                    labelText: "Confirm Password",
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _isPasswordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _isPasswordVisible = !_isPasswordVisible;
+                        });
+                      },
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value != pass ) {
+                      return 'Passwords are not same';
+                    }
                     return null;
                   },
                   onTap: _scrollToBottom,
@@ -116,25 +171,9 @@ class _SignupViewState extends State<SignupView> {
                   height: 20,
                 ),
                 // Forgot Password
-                Center(
-                  child: TextButton(
-                    onPressed: () {
-                      // Handle forgot password action
-                    },
-                    child: const Text(
-                      "Forgot Password",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff000000),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                // Login Button
+               
+                
+                // SignUp Button
                 Center(
                   child: SizedBox(
                     width: MediaQuery.sizeOf(context).width / 1.5,
@@ -155,7 +194,7 @@ class _SignupViewState extends State<SignupView> {
                         ),
                       ),
                       child: const Text(
-                        "Login",
+                        "Sign Up",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -169,6 +208,37 @@ class _SignupViewState extends State<SignupView> {
                   height: 10,
                 ),
                 // Sign Up
+                 Center(
+                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                     children: [
+                      Text(
+                          "Already have account?",
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 14,
+                          )
+                      ),
+                       TextButton(
+                        onPressed: () {
+                           Navigator.of(context).pop(MaterialPageRoute(
+                          builder: (context) => LoginView()));
+                        },
+                        child: const Text(
+                          "Sign In",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff000000),
+                          ),
+                        ),
+                                             ),
+                     ],
+                   ),
+                 ),
+                const SizedBox(
+                  height: 20,
+                ),
 
                 const SizedBox(height: 80), // Adds space at the bottom
               ],

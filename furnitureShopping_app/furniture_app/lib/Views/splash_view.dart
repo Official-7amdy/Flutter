@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:furniture_app/Views/LoginView.dart';
+import 'package:furniture_app/Views/loginView.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashView extends StatefulWidget {
