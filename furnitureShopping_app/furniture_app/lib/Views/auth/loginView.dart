@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:furniture_app/Views/signUp_view.dart';
+import 'package:furniture_app/Views/auth/forgetPass.dart';
+import 'package:furniture_app/Views/auth/signUp_view.dart';
 import 'package:furniture_app/core/PublicWidgets/loading.dart';
 import 'package:lottie/lottie.dart';
 
@@ -118,7 +119,8 @@ class _LoginViewState extends State<LoginView> {
                 Center(
                   child: TextButton(
                     onPressed: () {
-                      // Handle forgot password action
+                       Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Forgetpass()));
                     },
                     child: const Text(
                       "Forgot Password",
@@ -173,7 +175,7 @@ class _LoginViewState extends State<LoginView> {
                     onPressed: () {
                       // Handle sign-up action
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SignupView()));
+                          builder: (context) => const SignupView()));
                       
                     },
                     child: const Text(
