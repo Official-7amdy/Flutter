@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:furniture_app/Views/signUp_view.dart';
 import 'package:furniture_app/core/PublicWidgets/loading.dart';
-import 'package:lottie/lottie.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class SignupView extends StatefulWidget {
+  SignupView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<SignupView> createState() => _SignupViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _SignupViewState extends State<SignupView> {
   final _formKey = GlobalKey<FormState>();
+
   final ScrollController _scrollController = ScrollController();
+
   bool _isPasswordVisible = false;
 
   @override
   void dispose() {
-    _scrollController.dispose(); 
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -42,8 +42,9 @@ class _LoginViewState extends State<LoginView> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-               
-                 SizedBox(height:  MediaQuery.sizeOf(context).height / 5,), // Adds space from the top
+                SizedBox(
+                  height: MediaQuery.sizeOf(context).height / 5,
+                ), // Adds space from the top
                 const Text(
                   "Hello!",
                   style: TextStyle(
@@ -140,10 +141,10 @@ class _LoginViewState extends State<LoginView> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState?.validate() ?? false) {
-                            setState(() {
-                              // Loading dialog
-                             showLoadingDialog;
-                            });                          
+                          setState(() {
+                            // Loading dialog
+                            showLoadingDialog;
+                          });
                           // Handle login action
                         }
                       },
@@ -168,24 +169,7 @@ class _LoginViewState extends State<LoginView> {
                   height: 10,
                 ),
                 // Sign Up
-                Center(
-                  child: TextButton(
-                    onPressed: () {
-                      // Handle sign-up action
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SignupView()));
-                      
-                    },
-                    child: const Text(
-                      "Sign Up",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w300,
-                        color: Color(0xff000000),
-                      ),
-                    ),
-                  ),
-                ),
+
                 const SizedBox(height: 80), // Adds space at the bottom
               ],
             ),
@@ -195,4 +179,3 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 }
-

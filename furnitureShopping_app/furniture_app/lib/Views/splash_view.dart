@@ -11,22 +11,26 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   @override
-   void initState() {
+  void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 5), () {
-      // ignore: use_build_context_synchronously
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (context) {
-        return const LoginView();
-      }));
+    redirect();
+  }
+
+  Future<void> redirect() async {
+    await Future.delayed(const Duration(seconds: 3), () {
+      // Using context inside the setState or initState method
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const LoginView()),
+      );
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Lottie.asset('assets/animation/animatedLogo.json'),
-        ),
+      ),
     );
   }
 }
