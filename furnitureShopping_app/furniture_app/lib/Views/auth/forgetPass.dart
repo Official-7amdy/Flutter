@@ -1,4 +1,4 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:furniture_app/core/PublicWidgets/loading.dart';
 import 'package:lottie/lottie.dart';
 
@@ -16,7 +16,7 @@ class _ForgetpassState extends State<Forgetpass> {
 
   @override
   void dispose() {
-    _scrollController.dispose(); 
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -27,13 +27,59 @@ class _ForgetpassState extends State<Forgetpass> {
       curve: Curves.easeInOut,
     );
   }
+
+  void _showSuccessDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible:
+          false, // Prevents the user from closing the dialog by tapping outside
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Lottie.asset(
+                  'assets/animation/success.json',
+                  width: 200,
+                  height: 200,
+                  repeat: false,
+                ),
+                const SizedBox(height: 5),
+                const Text(
+                  'Email Sent Successfully!',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                const SizedBox(height: 35),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+
+    // Automatically close the dialog after 2 seconds
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.of(context).pop(); // Close the dialog
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: (){
-          Navigator.pop(context);
-        }, icon: Icon(Icons.arrow_back_ios)),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios)),
       ),
       body: SingleChildScrollView(
         controller: _scrollController,
@@ -45,34 +91,29 @@ class _ForgetpassState extends State<Forgetpass> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-               
-               
-                  
-               Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                 children: [
-                  
-                   Container(
-                    height: 250,
-                    width: 250,
-                    child: Lottie.asset('assets/animation/animatedForgotPass.json')),
-                 ],
-               ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                        height: 250,
+                        width: 250,
+                        child: Lottie.asset(
+                            'assets/animation/animatedForgotPass.json')),
+                  ],
+                ),
                 const Text(
                   "Forgot Password",
                   style: TextStyle(
-                    fontSize: 45,
+                    fontSize: 35,
                     color: Colors.black,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-               
-                
                 const Text(
-                  "Please enter your Email to change your password",
+                  "Please enter your Email to recover your password",
                   style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 12,
                     color: Colors.black54,
                     fontWeight: FontWeight.w700,
                   ),
@@ -91,10 +132,6 @@ class _ForgetpassState extends State<Forgetpass> {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your email';
                     }
-                    Dialog(
-                      child: Text('Email is valid'),
-                      
-                    );
                     return null;
                   },
                   onTap: _scrollToBottom,
@@ -102,13 +139,9 @@ class _ForgetpassState extends State<Forgetpass> {
                 const SizedBox(
                   height: 20,
                 ),
-                // Password field
-               
                 const SizedBox(
                   height: 40,
                 ),
-                // Forgot Password
-             
                 // Login Button
                 Center(
                   child: SizedBox(
@@ -116,11 +149,8 @@ class _ForgetpassState extends State<Forgetpass> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState?.validate() ?? false) {
-                            setState(() {
-                              // Loading dialog
-                             showLoadingDialog;
-                            });                          
-                          // Handle login action
+                          _showSuccessDialog(
+                              context); // Show success dialog immediately
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -143,8 +173,6 @@ class _ForgetpassState extends State<Forgetpass> {
                 const SizedBox(
                   height: 10,
                 ),
-                // Sign Up
-              
                 const SizedBox(height: 80), // Adds space at the bottom
               ],
             ),

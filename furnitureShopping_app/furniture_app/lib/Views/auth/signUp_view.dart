@@ -48,15 +48,15 @@ class _SignupViewState extends State<SignupView> {
                   height: MediaQuery.sizeOf(context).height / 5,
                 ), // Adds space from the top
                 const Text(
-                  "SignUp",
+                  "Hello!",
                   style: TextStyle(
-                    fontSize: 35,
+                    fontSize: 30,
                     color: Colors.black54,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 const Text(
-                  "Welcome ",
+                  "SignUp ",
                   style: TextStyle(
                     fontSize: 45,
                     color: Colors.black,
@@ -70,8 +70,9 @@ class _SignupViewState extends State<SignupView> {
                 TextFormField(
                   decoration: const InputDecoration(
                     labelText: "Name",
-                     border:  OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
                     prefixIcon: Icon(Icons.person),
                   ),
                   validator: (value) {
@@ -84,11 +85,13 @@ class _SignupViewState extends State<SignupView> {
                 ),
                 const SizedBox(
                   height: 20,
-                ),TextFormField(
+                ),
+                TextFormField(
                   decoration: const InputDecoration(
                     labelText: "Email",
-                     border:  OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
                     prefixIcon: Icon(Icons.email),
                   ),
                   validator: (value) {
@@ -102,8 +105,7 @@ class _SignupViewState extends State<SignupView> {
                 const SizedBox(
                   height: 20,
                 ),
-               
-               
+
                 // Password field
                 TextFormField(
                   obscureText: !_isPasswordVisible,
@@ -130,7 +132,7 @@ class _SignupViewState extends State<SignupView> {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your password';
                     }
-                    pass=value;
+                    pass = value;
                     return null;
                   },
                   onTap: _scrollToBottom,
@@ -160,7 +162,7 @@ class _SignupViewState extends State<SignupView> {
                     ),
                   ),
                   validator: (value) {
-                    if (value != pass ) {
+                    if (value != pass) {
                       return 'Passwords are not same';
                     }
                     return null;
@@ -171,8 +173,7 @@ class _SignupViewState extends State<SignupView> {
                   height: 20,
                 ),
                 // Forgot Password
-               
-                
+
                 // SignUp Button
                 Center(
                   child: SizedBox(
@@ -208,21 +209,19 @@ class _SignupViewState extends State<SignupView> {
                   height: 10,
                 ),
                 // Sign Up
-                 Center(
-                   child: Row(
+                Center(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                     children: [
-                      Text(
-                          "Already have account?",
+                    children: [
+                      Text("Already have account?",
                           style: TextStyle(
                             color: Colors.grey,
                             fontSize: 14,
-                          )
-                      ),
-                       TextButton(
+                          )),
+                      TextButton(
                         onPressed: () {
-                           Navigator.of(context).pop(MaterialPageRoute(
-                          builder: (context) => LoginView()));
+                          Navigator.of(context).pop(MaterialPageRoute(
+                              builder: (context) => LoginView()));
                         },
                         child: const Text(
                           "Sign In",
@@ -232,10 +231,10 @@ class _SignupViewState extends State<SignupView> {
                             color: Color(0xff000000),
                           ),
                         ),
-                                             ),
-                     ],
-                   ),
-                 ),
+                      ),
+                    ],
+                  ),
+                ),
                 const SizedBox(
                   height: 20,
                 ),

@@ -18,7 +18,7 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   void dispose() {
-    _scrollController.dispose(); 
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -43,12 +43,13 @@ class _LoginViewState extends State<LoginView> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-               
-                 SizedBox(height:  MediaQuery.sizeOf(context).height / 5,), // Adds space from the top
+                SizedBox(
+                  height: MediaQuery.sizeOf(context).height / 5,
+                ), // Adds space from the top
                 const Text(
                   "Hello!",
                   style: TextStyle(
-                    fontSize: 35,
+                    fontSize: 30,
                     color: Colors.black54,
                     fontWeight: FontWeight.w600,
                   ),
@@ -119,7 +120,7 @@ class _LoginViewState extends State<LoginView> {
                 Center(
                   child: TextButton(
                     onPressed: () {
-                       Navigator.of(context).push(MaterialPageRoute(
+                      Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const Forgetpass()));
                     },
                     child: const Text(
@@ -142,10 +143,10 @@ class _LoginViewState extends State<LoginView> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState?.validate() ?? false) {
-                            setState(() {
-                              // Loading dialog
-                             showLoadingDialog;
-                            });                          
+                          setState(() {
+                            // Loading dialog
+                            showLoadingDialog;
+                          });
                           // Handle login action
                         }
                       },
@@ -176,7 +177,6 @@ class _LoginViewState extends State<LoginView> {
                       // Handle sign-up action
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const SignupView()));
-                      
                     },
                     child: const Text(
                       "Sign Up",
@@ -197,4 +197,3 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 }
-
