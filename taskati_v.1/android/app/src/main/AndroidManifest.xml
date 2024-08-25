@@ -1,12 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="furniture_app"
+        android:label="taskati_8_19"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
-
             android:name=".MainActivity"
-            android:enableOnBackInvokedCallback="true"
             android:exported="true"
             android:launchMode="singleTop"
             android:taskAffinity=""

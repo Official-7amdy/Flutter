@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:furniture_app/Views/myCart_view.dart';
-import 'package:furniture_app/Views/product_view.dart';
 import 'package:furniture_app/Views/splash_view.dart';
 
 void main() {
+  
   runApp(const MainApp());
 }
 
