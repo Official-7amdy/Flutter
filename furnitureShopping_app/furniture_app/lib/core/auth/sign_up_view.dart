@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:furniture_app/PublicWidgets/loading.dart';
 import 'package:furniture_app/core/auth/login_view.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:lottie/lottie.dart';
 
 class SignupView extends StatefulWidget {
   const SignupView({super.key});
@@ -12,6 +16,7 @@ class SignupView extends StatefulWidget {
 class _SignupViewState extends State<SignupView> {
   late String pass;
   final _formKey = GlobalKey<FormState>();
+  String? image;
 
   final ScrollController _scrollController = ScrollController();
 
@@ -30,6 +35,127 @@ class _SignupViewState extends State<SignupView> {
       curve: Curves.easeInOut,
     );
   }
+void _showSourceSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    isDismissible: true, // Prevents the user from closing the dialog by tapping outside
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(15),
+        
+
+      ),
+    ),
+    builder: (BuildContext context) {
+      return Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              
+              children: [
+                Container(
+                  child: Lottie.asset(
+                    'assets/animation/animatedUser.json',
+                    width: 100,
+                    height: 100,
+                    repeat: false,
+                  ),
+                ),
+                const SizedBox(height: 30),
+                SizedBox(
+                  width: MediaQuery.sizeOf(context).width / 1.3,
+                                    height: 50,
+
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // using image picker to acess camera and pick an image
+                      ImagePicker().pickImage(source: ImageSource.camera).then((value) {
+                        if (value!= null)
+                        setState(() {
+                          image = value.path;
+                          });
+                          });
+                          
+                     
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xff000000),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.camera_alt_outlined,
+                        color: Colors.white,
+                        ),
+                        const SizedBox(width: 10),
+                        const Text(
+                          "Camera",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                SizedBox(
+                  width: MediaQuery.sizeOf(context).width / 1.3,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                       ImagePicker().pickImage(source: ImageSource.gallery).then((value) {
+                        if (value!= null)
+                        setState(() {
+                          image = value.path;
+                          });
+                          });
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xff000000),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.browse_gallery_outlined,
+                        color: Colors.white),
+                        const SizedBox(width: 10),
+                        const Text(
+                          "Gallery",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+
+                
+                const SizedBox(height: 35),
+              ],
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -42,29 +168,65 @@ class _SignupViewState extends State<SignupView> {
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: MediaQuery.sizeOf(context).height / 5,
+                  height: MediaQuery.sizeOf(context).height / 7,
                 ), // Adds space from the top
-                const Text(
-                  "SignUp",
-                  style: TextStyle(
-                    fontSize: 35,
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w600,
-                  ),
+                
+              Stack(
+                children:[
+                  CircleAvatar(
+                  radius: 60,
+                  backgroundImage:(image!= null) ?FileImage(File(image!)): AssetImage('assets/images/user.jpeg')
                 ),
+                //ICON TO ADD A PROFILE PIC
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                      ),
+                    child: IconButton(
+                      icon: const Icon(Icons.camera_alt),
+                      onPressed: () {
+                        // opens a dialog to choose the pic source
+                        
+                         _showSourceSheet(
+                              context); 
+                        
+                        
+                       
+                        },
+                        ),
+                  ),
+                      ),
+
+                  
+                ] 
+              ),
                 const Text(
-                  "Welcome ",
+                  "Welcome !",
                   style: TextStyle(
-                    fontSize: 45,
+                    fontSize: 40,
                     color: Colors.black,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
+                const Text(
+                  "Sign Up ",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black54,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
                 SizedBox(
-                  height: MediaQuery.sizeOf(context).height / 15,
+                  height: MediaQuery.sizeOf(context).height / 20,
                 ),
                 // UserName field
                 TextFormField(

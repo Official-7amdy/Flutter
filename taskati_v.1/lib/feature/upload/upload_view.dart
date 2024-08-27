@@ -8,7 +8,7 @@ import 'package:taskati_8_19/core/services/local_storage.dart';
 import 'package:taskati_8_19/core/utils/colors.dart';
 import 'package:taskati_8_19/core/utils/text_style.dart';
 import 'package:taskati_8_19/core/widgets/custom_button.dart';
-import 'package:taskati_8_19/feature/home/home_view.dart';
+import 'package:taskati_8_19/feature/home/page/home_view.dart';
 
 class UploadView extends StatefulWidget {
   const UploadView({super.key});
