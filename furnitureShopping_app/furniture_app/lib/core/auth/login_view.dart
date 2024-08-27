@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:furniture_app/core/auth/forget_pass.dart';
 import 'package:furniture_app/core/auth/sign_up_view.dart';
 import 'package:furniture_app/PublicWidgets/loading.dart';
+import 'package:furniture_app/core/utils/text_style.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -52,13 +53,9 @@ class _LoginViewState extends State<LoginView> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                const Text(
+                 Text(
                   "Welcome Back",
-                  style: TextStyle(
-                    fontSize: 45,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: getTitleTextStyle()
                 ),
                 SizedBox(
                   height: MediaQuery.sizeOf(context).height / 9,

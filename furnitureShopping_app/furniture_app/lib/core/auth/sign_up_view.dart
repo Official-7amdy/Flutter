@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:furniture_app/PublicWidgets/loading.dart';
 import 'package:furniture_app/core/auth/login_view.dart';
+import 'package:furniture_app/core/utils/text_style.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 
@@ -209,13 +210,9 @@ void _showSourceSheet(BuildContext context) {
                   
                 ] 
               ),
-                const Text(
+                 Text(
                   "Welcome !",
-                  style: TextStyle(
-                    fontSize: 40,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style:getTitleTextStyle()
                 ),
                 const Text(
                   "Sign Up ",
