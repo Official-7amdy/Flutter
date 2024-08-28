@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:taskati_8_19/core/functions/navigation.dart';
 import 'package:taskati_8_19/core/utils/text_style.dart';
 import 'package:taskati_8_19/core/widgets/custom_button.dart';
 import 'package:taskati_8_19/feature/add_task/add_task_view.dart';
@@ -12,6 +11,7 @@ class TodayHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final addTaskView = AddTaskViewState();
     return Row(
       children: [
         Expanded(
@@ -31,7 +31,7 @@ class TodayHeaderWidget extends StatelessWidget {
             width: 140,
             text: '+ Add Task',
             onPressed: () {
-              push(context, const AddTaskView());
+            addTaskView.showTaskFormModal(context);
             })
       ],
     );

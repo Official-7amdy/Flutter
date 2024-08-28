@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:lottie/lottie.dart';
 import 'package:taskati_8_19/core/services/local_storage.dart';
 import 'package:taskati_8_19/core/utils/colors.dart';
 import 'package:taskati_8_19/core/utils/text_style.dart';
@@ -66,6 +67,7 @@ class _ProfileViewState extends State<ProfileView> {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
+                                          Lottie.asset('assets/user.json',width: 150,height: 150),
                                           const Gap(20),
                                           CustomButton(
                                               width: double.infinity,
