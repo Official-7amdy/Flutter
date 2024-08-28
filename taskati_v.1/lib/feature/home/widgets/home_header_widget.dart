@@ -23,10 +23,15 @@ class HomeHeaderWidget extends StatelessWidget {
               'Hello, ${AppLocalStorage.getCachedData(AppLocalStorage.kName)}',
               style: getTitleTextStyle(color: AppColors.primaryColor),
             ),
-            Text(
-              'Have a nice Day',
-              style: getBodyTextStyle(),
-            ),
+                    Text(
+            DateTime.now().hour < 12 
+                ? 'Good Morning,'
+                : DateTime.now().hour < 18 
+                    ? 'Good Afternoon, '
+                    : 'Good Evening, ',
+            style: getBodyTextStyle(),
+          )
+
           ],
         ),
         const Spacer(),
