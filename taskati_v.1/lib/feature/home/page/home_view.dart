@@ -44,6 +44,7 @@ class _HomeViewState extends State<HomeView> {
               const Gap(20),
               Expanded(
                   child: ListView.builder(
+                    physics: const BouncingScrollPhysics(),
                 itemCount: 5,
                 itemBuilder: (context, index) {
                   return Dismissible(
