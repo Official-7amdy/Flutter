@@ -1,9 +1,10 @@
+import 'package:bookia_app/Views/Auth/login_screen.dart';
+import 'package:bookia_app/Views/Auth/signup_screen.dart';
 import 'package:bookia_app/core/customWidgets/customButton.dart';
-import 'package:bookia_app/core/utils/appColors.dart';
+import 'package:bookia_app/core/navigation.dart';
 import 'package:bookia_app/core/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
 
  class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -22,50 +23,36 @@ import 'package:google_fonts/google_fonts.dart';
             
             ),
       ),
-   
-          
-      
-      
           Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            
+            mainAxisAlignment: MainAxisAlignment.start, 
             children: [
-              const Gap(150),
-              
+              const Gap(150),  
               Center(
                 child:  Image.asset(
                     'assets/images/logo.png',
-                    fit: BoxFit.cover,
-                    
-                    
+                    fit: BoxFit.cover,                   
                     )
                 ),
                 Text("Order Your Book Now!",
                 
-                 style: GoogleFonts.dmSerifDisplay(
-                  textStyle: getTitleTextStyle()
-                 ),
-                )
+                 style:getSmallTitleTextStyle()
+                 ),    
             ],
           ),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                
                 CustomButton(context, text: 'Login',
                 onPressed: () {
-                  Navigator.pushNamed(context, '/login');
+                  push(context, const LoginScreen());
                   },
-                
                 ),
                  const Gap(20),
                  WhiteCustomButton(context, text: 'Register',
                 onPressed: () {
-                  Navigator.pushNamed(context, '/login');
-                  },
-                 
-                
+                  push(context, const SignUpScreen());
+                  }
                 ),
                 const Gap(150),
               ],

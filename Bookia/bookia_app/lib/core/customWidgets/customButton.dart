@@ -1,7 +1,7 @@
 import 'package:bookia_app/core/utils/appColors.dart';
 import 'package:bookia_app/core/utils/text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class CustomButton extends StatelessWidget {
   const CustomButton(BuildContext context, {
@@ -32,9 +32,7 @@ class CustomButton extends StatelessWidget {
           onPressed: onPressed,
           child: Text(
             text,
-            style: GoogleFonts.dmSerifDisplay(
-                  textStyle: getButtonTextStyle()
-                 ),
+            style: getButtonTextStyle()
           )),
     );
   }
@@ -58,9 +56,7 @@ class WhiteCustomButton extends CustomButton{
           child: Text(
             text,
             
-            style: GoogleFonts.dmSerifDisplay(
-                  textStyle: getButtonTextStyle(color:AppColors.secondaryColor)
-                 ),
+           style: getButtonTextStyle(color: AppColors.blackColor)
             
           )),
     );
