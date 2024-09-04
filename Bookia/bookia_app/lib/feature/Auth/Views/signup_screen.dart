@@ -1,4 +1,6 @@
-import 'package:bookia_app/Views/Auth/login_screen.dart';
+import 'package:bookia_app/core/customWidgets/CustomPassField.dart';
+import 'package:bookia_app/core/customWidgets/socialSignIn.dart';
+import 'package:bookia_app/feature/Auth/Views/login_screen.dart';
 import 'package:bookia_app/core/customWidgets/customButton.dart';
 import 'package:bookia_app/core/customWidgets/customTextFormField.dart';
 import 'package:bookia_app/core/navigation.dart';
@@ -7,8 +9,15 @@ import 'package:bookia_app/core/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  bool isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +45,11 @@ class SignUpScreen extends StatelessWidget {
                const Gap(20),
               customTextFormField(hintText: 'Enter your email'),
               const Gap(20),
-               customPassTextFormField(hintText: 'Enter your Password'),
+                       const Custompassfield(),
+
                const Gap(20),
-              customPassTextFormField(hintText: 'Confirm your Password'),
+                    const Custompassfield(),
+
               
               const Gap(20),
                CustomButton(context, text: 'Register',
@@ -49,20 +60,7 @@ class SignUpScreen extends StatelessWidget {
                const Gap(50),
                 Center(child: Text('Or Register With',style:getSmallTextStyle(),)),
                 const Gap(20),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      IconButton(onPressed: (){}, icon: Image.asset('assets/icons/facebook.png',width: 30,height: 30,)),
-                      IconButton(onPressed: (){}, icon: Image.asset('assets/icons/google.png',width: 30,height: 30,)),
-                       IconButton(onPressed: (){}, icon: Image.asset('assets/icons/apple.png',width: 30,height: 30,))
-                    ],
-                  ),
-                  
-                ),
-               
+              const Social_SignIn(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

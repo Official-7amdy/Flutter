@@ -1,14 +1,20 @@
-import 'package:bookia_app/Views/Auth/login_screen.dart';
+import 'package:bookia_app/core/customWidgets/CustomPassField.dart';
+import 'package:bookia_app/feature/Auth/Views/login_screen.dart';
 import 'package:bookia_app/core/customWidgets/customButton.dart';
-import 'package:bookia_app/core/customWidgets/customTextFormField.dart';
 import 'package:bookia_app/core/customWidgets/sucessDialog.dart';
 import 'package:bookia_app/core/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class CreateNewpass extends StatelessWidget {
+class CreateNewpass extends StatefulWidget {
   const CreateNewpass({super.key});
 
+  @override
+  State<CreateNewpass> createState() => _CreateNewpassState();
+}
+
+class _CreateNewpassState extends State<CreateNewpass> {
+  bool isPasswordVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,10 +42,11 @@ class CreateNewpass extends StatelessWidget {
           
              ),
              const Gap(50),
-               customPassTextFormField(hintText: 'New Password'),
+                     const Custompassfield(),
 
                const Gap(20),
-              customPassTextFormField(hintText: 'Confirm Password'),
+                     const Custompassfield(),
+
             
               const Gap(20),
                CustomButton(context, text: 'Reset Password',

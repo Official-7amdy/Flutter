@@ -1,16 +1,25 @@
- import 'package:bookia_app/Views/Auth/forgotPass_screen.dart';
-import 'package:bookia_app/Views/Auth/signup_screen.dart';
+ import 'package:bookia_app/core/customWidgets/CustomPassField.dart';
+import 'package:bookia_app/core/customWidgets/socialSignIn.dart';
+import 'package:bookia_app/feature/Auth/Views/forgotPass_screen.dart';
+import 'package:bookia_app/feature/Auth/Views/signup_screen.dart';
 import 'package:bookia_app/core/customWidgets/customButton.dart';
 import 'package:bookia_app/core/customWidgets/customTextFormField.dart';
 import 'package:bookia_app/core/navigation.dart';
 import 'package:bookia_app/core/utils/appColors.dart';
 import 'package:bookia_app/core/utils/text_style.dart';
+import 'package:bookia_app/feature/Home/Views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  
   @override
   Widget build(BuildContext context) {
     
@@ -36,7 +45,7 @@ class LoginScreen extends StatelessWidget {
              const Gap(50),
               customTextFormField(hintText: 'Enter your email'),
                const Gap(20),
-              customPassTextFormField(hintText: 'Enter your Password'),
+        const Custompassfield(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -48,25 +57,13 @@ class LoginScreen extends StatelessWidget {
               const Gap(20),
                CustomButton(context, text: 'Login',
                   onPressed: () {
-                    pushWithReplacement(context, const LoginScreen());
+                    pushWithReplacement(context, const HomeView());
                     },
                ),
                const Gap(50),
                 Center(child: Text('Or Login With',style:getSmallTextStyle(),)),
                 const Gap(20),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      IconButton(onPressed: (){}, icon: Image.asset('assets/icons/facebook.png',width: 30,height: 30,)),
-                      IconButton(onPressed: (){}, icon: Image.asset('assets/icons/google.png',width: 30,height: 30,)),
-                       IconButton(onPressed: (){}, icon: Image.asset('assets/icons/apple.png',width: 30,height: 30,))
-                    ],
-                  ),
-                  
-                ),
+                const Social_SignIn(),
                 const Gap(50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -88,5 +85,4 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-
 }

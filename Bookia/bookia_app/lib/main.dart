@@ -1,4 +1,4 @@
-import 'package:bookia_app/Views/welcome_screen.dart';
+import 'package:bookia_app/feature/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

@@ -1,5 +1,5 @@
-import 'package:bookia_app/Views/Auth/create_newPass.dart';
-import 'package:bookia_app/Views/Auth/signup_screen.dart';
+import 'package:bookia_app/feature/Auth/Views/create_newPass.dart';
+import 'package:bookia_app/feature/Auth/Views/signup_screen.dart';
 import 'package:bookia_app/core/customWidgets/customButton.dart';
 import 'package:bookia_app/core/navigation.dart';
 import 'package:bookia_app/core/utils/appColors.dart';

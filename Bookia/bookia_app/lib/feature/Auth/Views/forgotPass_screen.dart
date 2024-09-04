@@ -1,5 +1,5 @@
-import 'package:bookia_app/Views/Auth/otp_screen.dart';
-import 'package:bookia_app/Views/Auth/signup_screen.dart';
+import 'package:bookia_app/feature/Auth/Views/otp_screen.dart';
+import 'package:bookia_app/feature/Auth/Views/signup_screen.dart';
 import 'package:bookia_app/core/customWidgets/customButton.dart';
 import 'package:bookia_app/core/customWidgets/customTextFormField.dart';
 import 'package:bookia_app/core/navigation.dart';
