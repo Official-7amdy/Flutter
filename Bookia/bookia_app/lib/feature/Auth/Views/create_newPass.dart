@@ -42,10 +42,10 @@ class _CreateNewpassState extends State<CreateNewpass> {
           
              ),
              const Gap(50),
-                     const Custompassfield(),
+                     const Custompassfield(customHintText: "New Password",),
 
                const Gap(20),
-                     const Custompassfield(),
+                     const Custompassfield(customHintText: "Confirm Password",),
 
             
               const Gap(20),

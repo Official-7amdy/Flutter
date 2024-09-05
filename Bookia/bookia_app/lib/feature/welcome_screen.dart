@@ -1,3 +1,4 @@
+import 'package:bookia_app/core/utils/assets.dart';
 import 'package:bookia_app/feature/Auth/Views/login_screen.dart';
 import 'package:bookia_app/feature/Auth/Views/signup_screen.dart';
 import 'package:bookia_app/core/customWidgets/customButton.dart';
@@ -18,7 +19,7 @@ import 'package:gap/gap.dart';
         width: double.infinity,
         height: double.infinity,
         child: Image.asset(
-               'assets/images/welcome_background.png',
+               AppAssets.welcomeBackground,
                fit: BoxFit.fill,
             
             ),
@@ -29,7 +30,7 @@ import 'package:gap/gap.dart';
               const Gap(150),  
               Center(
                 child:  Image.asset(
-                    'assets/images/logo.png',
+                   AppAssets.logo,
                     fit: BoxFit.cover,                   
                     )
                 ),

@@ -1,3 +1,4 @@
+import 'package:bookia_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -17,7 +18,7 @@ import 'package:lottie/lottie.dart';
               mainAxisSize: MainAxisSize.min,
               children: [
                 Lottie.asset(
-                  'assets/animation/success.json',
+                 AppAssets.animatedSucess,
                   width: 200,
                   height: 200,
                   repeat: false,

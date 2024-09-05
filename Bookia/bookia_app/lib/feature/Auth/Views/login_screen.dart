@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
              const Gap(50),
               customTextFormField(hintText: 'Enter your email'),
                const Gap(20),
-        const Custompassfield(),
+        const Custompassfield(customHintText: "Enter your password",),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [

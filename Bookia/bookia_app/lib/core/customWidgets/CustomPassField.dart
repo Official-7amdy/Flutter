@@ -3,16 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Custompassfield extends StatefulWidget {
-  const Custompassfield({super.key});
+  final String customHintText;
+  
+  const Custompassfield({super.key,required this.customHintText});
 
   @override
   State<Custompassfield> createState() => _CustompassfieldState();
 }
 
 class _CustompassfieldState extends State<Custompassfield> {
+  
   bool isPasswordVisible= false;
   @override
   Widget build(BuildContext context) {
+
     return  TextFormField(
                     obscureText: !isPasswordVisible ,
                     decoration: InputDecoration(
@@ -37,7 +41,8 @@ class _CustompassfieldState extends State<Custompassfield> {
                                       
                                     
                                   
-                      hintText: "Enter Your Password",
+                      hintText: widget.customHintText,
+
                       border: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.grey.shade300,

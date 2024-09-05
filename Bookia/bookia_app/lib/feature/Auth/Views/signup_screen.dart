@@ -45,10 +45,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                const Gap(20),
               customTextFormField(hintText: 'Enter your email'),
               const Gap(20),
-                       const Custompassfield(),
+                       const Custompassfield(customHintText: "Password",),
 
                const Gap(20),
-                    const Custompassfield(),
+                    const Custompassfield(customHintText: "Confirm password",),
 
               
               const Gap(20),
