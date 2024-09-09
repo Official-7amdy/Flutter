@@ -1,5 +1,10 @@
+import 'package:bookia_app/core/customWidgets/appBottomNavigationBar.dart';
+import 'package:bookia_app/core/utils/text_style.dart';
+import 'package:bookia_app/feature/Home/Widgets/bookList.dart';
+import 'package:bookia_app/feature/Home/Widgets/homeCarousel.dart';
 import 'package:bookia_app/feature/Home/Widgets/homeHeader.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -7,43 +12,28 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const AppBottomNavigationBar(),
       appBar: homeHeader(),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-           Center(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxHeight: 200),
-        child: CarouselView(
-          controller: CarouselController(
-            
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const homeCarousel(),
+              const Gap(20),
+              Text('Popular Books', style: getTitleTextStyle(fontSize: 26)),
+              const Gap(10),
+              // Wrap ListView.builder in Expanded
+              const BookList(),
+              Text('New Collection', style: getTitleTextStyle(fontSize: 26)),
+              const Gap(10),
+              // Wrap ListView.builder in Expanded
+              const BookList(),
+            ],
           ),
-          itemExtent: 430,
-          shrinkExtent: 200,
-          children: List<Widget>.generate(2, (int index) {
-            return Container(
-              margin: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: const DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(
-                    'assets/images/books.png',
-                  ),
-                  ),
-                  ),
-            );
-          }),
         ),
       ),
-    )
-          ]
-          ),
-          ),
-
     );
   }
-
-
 }
