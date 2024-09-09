@@ -15,6 +15,7 @@ class HomeView extends StatelessWidget {
       bottomNavigationBar: const AppBottomNavigationBar(),
       appBar: homeHeader(),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(

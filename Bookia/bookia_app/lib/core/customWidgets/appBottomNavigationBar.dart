@@ -16,7 +16,6 @@ class AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
   int currentIndex = 0;
 
   void _onItemTapped(int index) {
-    if (currentIndex != index) {
       setState(() {
         currentIndex = index;
       });
@@ -24,11 +23,12 @@ class AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
       // Navigate based on the selected tab
       switch (index) {
         case 0:
+        
           pushWithReplacement(context, const HomeView());
 
           break;
         case 1:
-          push(context, const BookmarksView());
+          pushWithReplacement(context, const BookmarksView());
           // Handle navigation for Bookmark
           break;
         case 2:
@@ -40,7 +40,7 @@ class AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
         default:
           break;
       }
-    }
+    
   }
 
   @override
