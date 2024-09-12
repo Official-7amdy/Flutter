@@ -21,7 +21,7 @@ class HomeView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const homeCarousel(),
+              const HomeCarousel(),
               const Gap(20),
               Text('Popular Books', style: getTitleTextStyle(fontSize: 26)),
               const Gap(10),

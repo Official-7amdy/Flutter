@@ -2,8 +2,9 @@ import 'package:bookia_app/core/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-TextFormField customTextFormField({String? hintText}) {
+TextFormField customTextFormField({String? hintText,TextEditingController? Textcontroller }) {
   return TextFormField(
+    controller: Textcontroller,
     decoration: InputDecoration(
       hintStyle: GoogleFonts.dmSerifDisplay(
         textStyle: getSmallHintTextStyle(),
@@ -18,5 +19,3 @@ TextFormField customTextFormField({String? hintText}) {
     ),
   );
 }
-
-
