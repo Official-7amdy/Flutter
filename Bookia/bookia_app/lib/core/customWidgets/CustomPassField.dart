@@ -5,7 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 class Custompassfield extends StatefulWidget {
   final String customHintText;
 
-  const Custompassfield({super.key, required this.customHintText,TextEditingController? Textcontroller});
+  const Custompassfield(
+      {super.key,
+      required this.customHintText,
+      TextEditingController? Textcontroller});
 
   @override
   State<Custompassfield> createState() => _CustompassfieldState();
@@ -16,7 +19,6 @@ class _CustompassfieldState extends State<Custompassfield> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-
       obscureText: !isPasswordVisible,
       decoration: InputDecoration(
         hintStyle: GoogleFonts.dmSerifDisplay(

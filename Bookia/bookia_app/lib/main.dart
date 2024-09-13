@@ -16,9 +16,10 @@ class MainApp extends StatelessWidget {
     final authRepo = AuthRepo(); // Create an instance of AuthRepo
 
     return BlocProvider(
-      create: (BuildContext context) => AuthBloc(authRepo), // Pass AuthRepo to AuthBloc
+      create: (BuildContext context) =>
+          AuthBloc(authRepo), // Pass AuthRepo to AuthBloc
       child: const MaterialApp(
-        debugShowCheckedModeBanner: false, 
+        debugShowCheckedModeBanner: false,
         home: WelcomeScreen(),
       ),
     );

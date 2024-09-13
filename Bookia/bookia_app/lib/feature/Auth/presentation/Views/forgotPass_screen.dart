@@ -32,7 +32,9 @@ class ForgotpassScreen extends StatelessWidget {
                 "Don't worry! It occurs. Please enter the email address linked with your account.",
                 style: getSmallHintTextStyle()),
             const Gap(50),
-            customTextFormField(hintText: 'Enter your email'),
+            const CustomTextFormField(
+              hintText: 'Enter your email',
+            ),
             const Gap(20),
             CustomButton(
               context,

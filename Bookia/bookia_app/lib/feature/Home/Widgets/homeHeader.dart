@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 AppBar homeHeader() {
   return AppBar(
     automaticallyImplyLeading: false,
-    backgroundColor:AppColors.whiteColor, // Set a fixed background color
+    backgroundColor: AppColors.whiteColor, // Set a fixed background color
     elevation: 0, // Optional: Remove shadow to keep it flat
     title: Row(children: [
       Image.asset(

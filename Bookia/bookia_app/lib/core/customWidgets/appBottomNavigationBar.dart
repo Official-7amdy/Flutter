@@ -51,28 +51,36 @@ class AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
             AppAssets.home,
-            color: currentIndex == 0 ? activeColor : inactiveColor, // Change color based on active index
+            color: currentIndex == 0
+                ? activeColor
+                : inactiveColor, // Change color based on active index
           ),
           label: '',
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
             AppAssets.bookmark,
-            color: currentIndex == 1 ? activeColor : inactiveColor, // Change color based on active index
+            color: currentIndex == 1
+                ? activeColor
+                : inactiveColor, // Change color based on active index
           ),
           label: '',
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
             AppAssets.category,
-            color: currentIndex == 2 ? activeColor : inactiveColor, // Change color based on active index
+            color: currentIndex == 2
+                ? activeColor
+                : inactiveColor, // Change color based on active index
           ),
           label: '',
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
             AppAssets.profile,
-            color: currentIndex == 3 ? activeColor : inactiveColor, // Change color based on active index
+            color: currentIndex == 3
+                ? activeColor
+                : inactiveColor, // Change color based on active index
           ),
           label: '',
         ),

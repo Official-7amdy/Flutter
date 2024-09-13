@@ -11,3 +11,14 @@ class RegisterFailureState extends AuthState {
 
   RegisterFailureState(this.errorMessage);
 }
+
+
+class LoginLoadingState extends AuthState {}
+
+class LoginSuccessState extends AuthState {}
+
+class LoginFailureState extends AuthState {
+  final String errorMessage;
+
+  LoginFailureState(this.errorMessage);
+}

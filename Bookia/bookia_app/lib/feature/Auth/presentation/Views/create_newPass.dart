@@ -48,7 +48,7 @@ class _CreateNewpassState extends State<CreateNewpass> {
               text: 'Reset Password',
               onPressed: () {
                 showSuccessDialog(
-                    context: context, newScreen: const LoginScreen());
+                    context: context, ConstrutionText: 'Email Sent Sucessfuly');
               },
             ),
           ]),
