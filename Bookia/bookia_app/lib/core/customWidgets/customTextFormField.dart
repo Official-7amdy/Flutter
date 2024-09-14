@@ -1,3 +1,4 @@
+import 'package:bookia_app/core/utils/appColors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:bookia_app/core/utils/text_style.dart';
@@ -39,6 +40,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       focusNode: widget.focusNode,
       keyboardType: widget.keyboardType,
       obscureText: widget.isPassword && _isObscured,
+
+      
       validator: (value) {
         if (value == null || value.isEmpty) {
           return widget.validatorText ?? 'This field cannot be empty';
@@ -47,6 +50,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       },
       onFieldSubmitted: widget.onFieldSubmitted,
       decoration: InputDecoration(
+        //focus border
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primaryColor, width: 2,
+
+          ),
+
+          ),
+      
         hintStyle: GoogleFonts.dmSerifDisplay(
           textStyle: getSmallHintTextStyle(),
         ),

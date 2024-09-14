@@ -1,5 +1,4 @@
 import 'package:bookia_app/core/customWidgets/CustomPassField.dart';
-import 'package:bookia_app/feature/Auth/presentation/Views/login_screen.dart';
 import 'package:bookia_app/core/customWidgets/customButton.dart';
 import 'package:bookia_app/core/customWidgets/sucessDialog.dart';
 import 'package:bookia_app/core/utils/text_style.dart';

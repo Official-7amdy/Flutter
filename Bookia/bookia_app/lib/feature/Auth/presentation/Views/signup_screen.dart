@@ -10,7 +10,6 @@ import 'package:bookia_app/core/utils/text_style.dart';
 import 'package:bookia_app/feature/Auth/presentation/bloc/auth_bloc.dart';
 import 'package:bookia_app/feature/Auth/presentation/bloc/auth_event.dart';
 import 'package:bookia_app/feature/Auth/presentation/bloc/auth_state.dart';
-import 'package:bookia_app/feature/Home/Views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
