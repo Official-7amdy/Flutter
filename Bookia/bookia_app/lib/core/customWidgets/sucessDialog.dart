@@ -2,12 +2,13 @@ import 'package:bookia_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-showSuccessDialog({required BuildContext context, required String? ConstrutionText}) {
+showSuccessDialog(
+    {required BuildContext context, required String? ConstrutionText}) {
   showDialog(
     context: context,
     barrierDismissible:
         false, // Prevents the user from closing the dialog by tapping outside
-        
+
     builder: (BuildContext context) {
       return Dialog(
         shape: RoundedRectangleBorder(
@@ -25,14 +26,13 @@ showSuccessDialog({required BuildContext context, required String? ConstrutionTe
                 repeat: false,
               ),
               const SizedBox(height: 5),
-               Text(
+              Text(
                 ConstrutionText!,
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w800,
                 ),
               ),
-            
               const SizedBox(height: 35),
             ],
           ),
@@ -42,8 +42,6 @@ showSuccessDialog({required BuildContext context, required String? ConstrutionTe
   );
 
   // Automatically close the dialog after 2 seconds
-  
- 
 }
 
 showLoadingDialog({
@@ -77,7 +75,6 @@ showLoadingDialog({
                   fontWeight: FontWeight.w800,
                 ),
               ),
-             
               const SizedBox(height: 35),
             ],
           ),

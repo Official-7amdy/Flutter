@@ -34,17 +34,16 @@ class _LoginScreenState extends State<LoginScreen> {
         if (state is LoginLoadingState) {
           // Show the custom loading dialog when loading
           showLoadingDialog(context: context);
-          
-          
-           
         } else if (state is LoginSuccessState) {
-            showSuccessDialog(context: context, ConstrutionText: "Signed In Sucessfully");
+        
+          showSuccessDialog(
+              context: context, ConstrutionText: "Signed In Sucessfully");
           Future.delayed(const Duration(seconds: 2), () {
- // ignore: use_build_context_synchronously
-  Navigator.pop(context); // Close the loading dialog
-          pushWithReplacement(context, const HomeView());
-    });
-          
+
+            // ignore: use_build_context_synchronously
+            Navigator.pop(context); // Close the loading dialog
+            pushAndRemoveUntil(context, const HomeView());
+          });
         } else if (state is LoginFailureState) {
           Navigator.pop(context); // Close the loading dialog
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -93,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       TextButton(
                         onPressed: () {
-                          push(context, const ForgotpassScreen());
+                         pushWithSlideTransition(context, const ForgotpassScreen());
                         },
                         child: Text(
                           'Forgot Password?',
@@ -133,13 +132,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       TextButton(
                         onPressed: () {
-                          pushWithReplacement(
-                              context, const SignUpScreen());
+                          pushWithSlideTransition(context, const SignUpScreen());
                         },
                         child: Text(
                           'Sign Up',
-                          style: getSmallTextStyle(
-                              color: AppColors.primaryColor),
+                          style:
+                              getSmallTextStyle(color: AppColors.primaryColor),
                         ),
                       ),
                     ],

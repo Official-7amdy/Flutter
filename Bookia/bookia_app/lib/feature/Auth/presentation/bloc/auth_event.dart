@@ -9,13 +9,10 @@ class RegisterEvent extends AuthEvent {
   RegisterEvent(this.params);
 }
 
-
 class LoginEvent extends AuthEvent {
   final String email;
-    final String password;
-
-  
+  final String password;
 
   // Constructor only needs to accept the RegisterParams
-  LoginEvent({required this.email,required this.password});
+  LoginEvent({required this.email, required this.password});
 }

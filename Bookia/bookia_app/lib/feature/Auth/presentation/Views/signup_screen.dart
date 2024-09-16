@@ -38,7 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           showLoadingDialog(context: context);
         } else if (state is RegisterSuccessState) {
           Navigator.pop(context); // Close the loading dialog
-          pushWithReplacement(context, const  LoginScreen());
+          pushWithReplacement(context, const LoginScreen());
         } else if (state is RegisterFailureState) {
           Navigator.pop(context); // Close the loading dialog
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

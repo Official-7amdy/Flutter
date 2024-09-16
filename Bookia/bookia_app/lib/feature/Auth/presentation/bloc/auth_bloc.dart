@@ -1,6 +1,7 @@
 import 'package:bookia_app/feature/Auth/data/Repo/auth_repo.dart';
 import 'package:bookia_app/feature/Auth/presentation/bloc/auth_event.dart';
 import 'package:bookia_app/feature/Auth/presentation/bloc/auth_state.dart';
+import 'package:bookia_app/services/local_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
@@ -28,18 +29,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  
   Future<void> login(LoginEvent event, Emitter<AuthState> emit) async {
     emit(LoginLoadingState());
 
     try {
       final result = await AuthRepo.login(
-        email:event.email,
+        email: event.email,
         password: event.password,
       ); // Async call
 
       if (result != null) {
         emit(LoginSuccessState()); // Emitting success state
+        LocalStorage.cacheData(key: LocalStorage.token, value: result.data?.token);
       } else {
         emit(LoginFailureState("Something went wrong"));
       }
