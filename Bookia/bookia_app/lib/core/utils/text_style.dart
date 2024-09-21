@@ -22,13 +22,33 @@ TextStyle getSubTitleTextStyle(
   ));
 }
 
+TextStyle getSubDetailsButtonTextStyle(
+    {double? fontSize, Color? color, FontWeight? fontWeight}) {
+  return GoogleFonts.dmSerifDisplay(
+      textStyle: TextStyle(
+    fontSize: fontSize ?? 25.0,
+    color: color ?? AppColors.whiteColor,
+    fontWeight: fontWeight ?? FontWeight.normal,
+  ));
+}
+
 TextStyle getBookPriceTextStyle(
     {double? fontSize, Color? color, FontWeight? fontWeight}) {
   return GoogleFonts.dmSerifDisplay(
       textStyle: TextStyle(
-    fontSize: fontSize ?? 20.0,
+    fontSize: fontSize ?? 22.0,
     color: color ?? AppColors.secondaryColor,
     fontWeight: fontWeight ?? FontWeight.bold,
+  ));
+}
+
+TextStyle getBookDiscountPriceTextStyle(
+    {double? fontSize, Color? color, FontWeight? fontWeight}) {
+  return GoogleFonts.dmSerifDisplay(
+      textStyle: TextStyle(
+    fontSize: fontSize ?? 15.0,
+    color: color ?? const Color.fromARGB(255, 200, 6, 6),
+    fontWeight: fontWeight ?? FontWeight.w900,
   ));
 }
 
@@ -58,6 +78,16 @@ TextStyle getSmallHintTextStyle(
       textStyle: TextStyle(
     fontSize: fontSize ?? 15.0,
     color: color ?? const Color(0xff8391A1),
+    fontWeight: fontWeight ?? FontWeight.normal,
+  ));
+}
+
+TextStyle getDescriptionTextStyle(
+    {double? fontSize, Color? color, FontWeight? fontWeight}) {
+  return GoogleFonts.dmSerifDisplay(
+      textStyle: TextStyle(
+    fontSize: fontSize ?? 18.0,
+    color: color ?? const Color.fromARGB(255, 99, 109, 121),
     fontWeight: fontWeight ?? FontWeight.normal,
   ));
 }

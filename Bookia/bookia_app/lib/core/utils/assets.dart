@@ -5,6 +5,9 @@ class AppAssets {
   static const String animatedUser = 'assets/animation/animatedUser.json';
   static const String animatedSucess = 'assets/animation/sucess.json';
   static const String loading = 'assets/animation/loading.json';
+    static const String searching = 'assets/animation/searching.json';
+
+
 
 //Icons
   static const String appleIcon = 'assets/icons/apple.png';

@@ -14,7 +14,6 @@ class _BookmarksViewState extends State<BookmarksView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: bookmarkAppBar(),
-      bottomNavigationBar: const AppBottomNavigationBar(),
     );
   }
 }

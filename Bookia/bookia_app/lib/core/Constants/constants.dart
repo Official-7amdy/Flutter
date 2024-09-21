@@ -5,4 +5,8 @@ class AppConstants {
 
   static const registerEndpoint = '/register';
   static const loginEndpoint = '/login';
+  static const bestSellerEndpoint = '/products-bestseller';
+  static const sliderEndpoint = '/sliders';
+
+
 }

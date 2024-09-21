@@ -10,7 +10,7 @@ import 'package:bookia_app/core/utils/text_style.dart';
 import 'package:bookia_app/feature/Auth/presentation/bloc/auth_bloc.dart';
 import 'package:bookia_app/feature/Auth/presentation/bloc/auth_event.dart';
 import 'package:bookia_app/feature/Auth/presentation/bloc/auth_state.dart';
-import 'package:bookia_app/feature/Home/Views/home_view.dart';
+import 'package:bookia_app/feature/Home/presentation/Views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -35,11 +35,9 @@ class _LoginScreenState extends State<LoginScreen> {
           // Show the custom loading dialog when loading
           showLoadingDialog(context: context);
         } else if (state is LoginSuccessState) {
-        
           showSuccessDialog(
               context: context, ConstrutionText: "Signed In Sucessfully");
           Future.delayed(const Duration(seconds: 2), () {
-
             // ignore: use_build_context_synchronously
             Navigator.pop(context); // Close the loading dialog
             pushAndRemoveUntil(context, const HomeView());
@@ -92,7 +90,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       TextButton(
                         onPressed: () {
-                         pushWithSlideTransition(context, const ForgotpassScreen());
+                          pushWithSlideTransition(
+                              context, const ForgotpassScreen());
                         },
                         child: Text(
                           'Forgot Password?',
@@ -132,7 +131,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       TextButton(
                         onPressed: () {
-                          pushWithSlideTransition(context, const SignUpScreen());
+                          pushWithSlideTransition(
+                              context, const SignUpScreen());
                         },
                         child: Text(
                           'Sign Up',

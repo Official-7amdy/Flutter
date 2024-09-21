@@ -8,12 +8,17 @@ class CustomButton extends StatelessWidget {
     super.key,
     this.width,
     this.hight,
+    this.style,
     required this.text,
-    required this.onPressed,
+    required this.onPressed,  this.color,
   });
   final double? width;
   final double? hight;
   final String text;
+    final Color? color;
+
+    final TextStyle? style;
+
   final Function() onPressed;
 
   @override
@@ -23,13 +28,13 @@ class CustomButton extends StatelessWidget {
       width: width ?? MediaQuery.sizeOf(context).width / 1.1,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.primaryColor,
+            backgroundColor:color??  AppColors.primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
           ),
           onPressed: onPressed,
-          child: Text(text, style: getButtonTextStyle())),
+          child: Text(text, style:style??  getButtonTextStyle())),
     );
   }
 }

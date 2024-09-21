@@ -23,7 +23,8 @@ AppBar homeHeader() {
             AppAssets.notification,
             width: 24,
           ),
-          padding: const EdgeInsets.all(8.0), // Adds some padding for a better hit area
+          padding: const EdgeInsets.all(
+              8.0), // Adds some padding for a better hit area
         ),
         IconButton(
           onPressed: () {
@@ -33,7 +34,8 @@ AppBar homeHeader() {
             AppAssets.search,
             width: 24,
           ),
-          padding: const EdgeInsets.all(8.0), // Same padding for consistent hit area
+          padding:
+              const EdgeInsets.all(8.0), // Same padding for consistent hit area
         ),
       ],
     ),

@@ -40,7 +40,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       if (result != null) {
         emit(LoginSuccessState()); // Emitting success state
-        LocalStorage.cacheData(key: LocalStorage.token, value: result.data?.token);
+        LocalStorage.cacheData(
+            key: LocalStorage.token, value: result.data?.token);
       } else {
         emit(LoginFailureState("Something went wrong"));
       }
