@@ -1,4 +1,3 @@
-import 'package:bookia_app/core/customWidgets/appBottomNavigationBar.dart';
 import 'package:bookia_app/feature/Bookmarks/Widgets/bookmarkAppBar.dart';
 import 'package:flutter/material.dart';
 

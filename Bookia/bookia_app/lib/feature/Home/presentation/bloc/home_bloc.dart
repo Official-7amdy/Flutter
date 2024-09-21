@@ -10,6 +10,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
     on<GetBestSellerEvent>(getBestSellerBooks);
     on<GetSliderEvent>(getSlider);
+    add(GetSliderEvent());
+    add(GetBestSellerEvent());
   }
   BestSellerResponseModel? bestSellerResponseModel;
   SliderResponseModel? sliderResponseModel;

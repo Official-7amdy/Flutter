@@ -27,7 +27,9 @@ class MainApp extends StatelessWidget {
           ),
         ),
         BlocProvider(
-          create: (context) => HomeBloc(),
+          create: (context) => HomeBloc(
+            
+          ),
         ),
       ],
       child: const MaterialApp(

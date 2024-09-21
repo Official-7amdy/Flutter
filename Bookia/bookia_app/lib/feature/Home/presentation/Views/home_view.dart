@@ -1,4 +1,3 @@
-import 'package:bookia_app/core/customWidgets/appBottomNavigationBar.dart';
 import 'package:bookia_app/core/utils/text_style.dart';
 import 'package:bookia_app/feature/Home/presentation/Widgets/bookList.dart';
 import 'package:bookia_app/feature/Home/presentation/Widgets/homeCarousel.dart';
@@ -22,8 +21,7 @@ class _HomeViewState extends State<HomeView> {
       providers: [
         BlocProvider(
           create: (context) => HomeBloc()
-          ..add(GetSliderEvent())
-          ..add(GetBestSellerEvent()),
+          
         ),
        
       ],

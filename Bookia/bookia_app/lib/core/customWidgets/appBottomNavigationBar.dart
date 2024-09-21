@@ -1,4 +1,3 @@
-import 'package:bookia_app/core/navigation.dart';
 import 'package:bookia_app/core/utils/appColors.dart';
 import 'package:bookia_app/core/utils/assets.dart';
 import 'package:bookia_app/feature/Bookmarks/View/bookmarks_view.dart';
@@ -39,7 +38,6 @@ class AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
       ],
       bottomNavigationBar: BottomNavigationBar(
          type: BottomNavigationBarType.fixed,
-        enableFeedback: false,
           currentIndex: currentIndex,
           onTap: (value) {
             setState(() {
