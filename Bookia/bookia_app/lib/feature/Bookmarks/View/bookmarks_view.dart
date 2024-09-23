@@ -38,56 +38,58 @@ class _BookmarksViewState extends State<BookmarksView> {
                 ),
                 const SizedBox(width: 12), // Add spacing between the image and text
                  Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start ,
                     children: [
-                      Gap(20),
-                      Text(
-                        'Book Title',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Gap(20),
+                          const Text(
+                            'Book Title',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 8), // Add some space between title and author
+                          const Text(
+                            'Book Author',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          const Text(
+                            'Book Description',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          const Gap(10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                CustomButton(context,onPressed:(){} , text: 'Add To Cart',width: 200,hight: 40,),
+                              ],
+                            )
+                      
+                         
+                        ],
                       ),
-                      SizedBox(height: 8), // Add some space between title and author
-                      Text(
-                        'Book Author',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Book Description',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                        ),
-                      ),
-                     
+                  
+                      IconButton(onPressed: () {  },
+                   icon:  const Icon(Icons.remove_circle_outline_rounded,color: AppColors.redColor,),),
+                   
+                   
                     ],
                   ),
                 ),
                 
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        // Implement remove action
-                      },
-                      child: const Text(
-                        'Remove From Cart',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: AppColors.redColor,
-                        ),
-                      ),
-                    ),
-                  ],
-                )
+              
               ],
             );
           },

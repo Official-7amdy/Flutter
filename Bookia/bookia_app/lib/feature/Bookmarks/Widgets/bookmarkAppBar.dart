@@ -6,7 +6,7 @@ AppBar bookmarkAppBar() {
     centerTitle: true,
     automaticallyImplyLeading: false,
     title: Text(
-      "Favourite Books",
+      "Wishlist",
       style: getTitleTextStyle(),
     ),
   );
