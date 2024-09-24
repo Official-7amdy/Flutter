@@ -19,11 +19,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => HomeBloc()
-          
-        ),
-       
+        BlocProvider(create: (context) => HomeBloc()),
       ],
       child: Scaffold(
         appBar: homeHeader(),

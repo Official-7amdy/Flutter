@@ -13,7 +13,7 @@ class _CategoryViewState extends State<CategoryView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Categories'),
-        ),
+      ),
     );
   }
 }

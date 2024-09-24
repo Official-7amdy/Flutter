@@ -21,13 +21,19 @@ class HomeCarouselState extends State<HomeCarousel> {
   @override
   void initState() {
     super.initState();
-        context.read<HomeBloc>().add(GetSliderEvent());
-
+    context.read<HomeBloc>().add(GetSliderEvent());
 
     // Start auto-scroll with a timer
     _carouselTimer = Timer.periodic(const Duration(seconds: 5), (timer) {
       int nextPage = (_pageController.page?.toInt() ?? 0) + 1;
-      if (nextPage >= (context.read<HomeBloc>().sliderResponseModel?.data?.sliders?.length ?? 0)) {
+      if (nextPage >=
+          (context
+                  .read<HomeBloc>()
+                  .sliderResponseModel
+                  ?.data
+                  ?.sliders
+                  ?.length ??
+              0)) {
         nextPage = 0; // Loop back to the first page
       }
       _pageController.animateToPage(
@@ -68,7 +74,8 @@ class HomeCarouselState extends State<HomeCarousel> {
                         return Container(
                           margin: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: Colors.grey[300], // Skeleton background color
+                            color:
+                                Colors.grey[300], // Skeleton background color
                             borderRadius: BorderRadius.circular(10),
                           ),
                         );
@@ -76,7 +83,6 @@ class HomeCarouselState extends State<HomeCarousel> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  
                 ],
               ),
             ),
@@ -102,7 +108,8 @@ class HomeCarouselState extends State<HomeCarousel> {
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: CachedNetworkImageProvider(
-                                slider.sliders?[index].image ?? 'fallback_image_url',
+                                slider.sliders?[index].image ??
+                                    'fallback_image_url',
                               ),
                             ),
                           ),

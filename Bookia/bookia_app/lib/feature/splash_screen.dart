@@ -13,19 +13,19 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
- @override
-void initState() {
-  super.initState();
-  Future.delayed(const Duration(seconds: 3), () {
-    String? token = LocalStorage.getData(key: LocalStorage.token); // Allow token to be nullable
-    if (token != null && token.isNotEmpty) {
-      pushWithReplacement(context, const AppBottomNavigationBar());
-    } else {
-      pushWithReplacement(context, const WelcomeScreen());
-    }
-  });
-}
-
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 3), () {
+      String? token = LocalStorage.getData(
+          key: LocalStorage.token); // Allow token to be nullable
+      if (token != null && token.isNotEmpty) {
+        pushWithReplacement(context, const AppBottomNavigationBar());
+      } else {
+        pushWithReplacement(context, const WelcomeScreen());
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

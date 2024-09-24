@@ -10,9 +10,15 @@ class AddToWishlistEvent extends HomeEvent {
   final int productId;
 
   AddToWishlistEvent({required this.productId});
-  
 }
+
 class RemoveFromWishlistEvent extends HomeEvent {
   final int productId;
   RemoveFromWishlistEvent({required this.productId});
+}
+
+
+class GetWishlistEvent extends HomeEvent {
+
+
 }

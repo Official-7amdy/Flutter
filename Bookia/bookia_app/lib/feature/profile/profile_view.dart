@@ -13,7 +13,7 @@ class _ProfileViewState extends State<ProfileView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
-        ),
+      ),
     );
   }
 }

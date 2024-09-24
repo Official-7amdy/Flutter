@@ -132,8 +132,7 @@ class _BookListState extends State<BookList> {
                                       text: 'Buy',
                                       onPressed: () {
                                         // Action on button press
-                                        print(
-                                            'Buy ${books?[index].name}');
+                                        print('Buy ${books?[index].name}');
                                       },
                                     ),
                                   ],

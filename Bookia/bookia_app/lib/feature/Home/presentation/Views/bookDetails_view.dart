@@ -2,7 +2,6 @@ import 'package:bookia_app/core/customWidgets/customButton.dart';
 import 'package:bookia_app/core/navigation.dart';
 import 'package:bookia_app/core/utils/appColors.dart';
 import 'package:bookia_app/core/utils/text_style.dart';
-import 'package:bookia_app/feature/Auth/presentation/bloc/auth_bloc.dart';
 import 'package:bookia_app/feature/Home/data/models/response/best_seller_response_model/product.dart';
 import 'package:bookia_app/feature/Home/presentation/bloc/home_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -27,7 +26,7 @@ class _BookdetailsViewState extends State<BookdetailsView>
   @override
   void initState() {
     super.initState();
-    
+
     _controller = AnimationController(
       duration: const Duration(milliseconds: 300),
       vsync: this,
@@ -51,9 +50,13 @@ class _BookdetailsViewState extends State<BookdetailsView>
         isBookmarked ? _controller.forward() : _controller.reverse();
 
         if (isBookmarked) {
-          context.read<HomeBloc>().add(AddToWishlistEvent(productId: widget.product.id!));
+          context
+              .read<HomeBloc>()
+              .add(AddToWishlistEvent(productId: widget.product.id!));
         } else {
-          context.read<HomeBloc>().add(RemoveFromWishlistEvent(productId: widget.product.id!));
+          context
+              .read<HomeBloc>()
+              .add(RemoveFromWishlistEvent(productId: widget.product.id!));
         }
       });
     } else {
@@ -72,13 +75,16 @@ class _BookdetailsViewState extends State<BookdetailsView>
             const SnackBar(content: Text('Added to Wishlist')),
           );
         } else if (state is RemoveFromWishlistLoadedState) {
+          setState(() {
+            isBookmarked = !isBookmarked;
+          });
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Removed from Wishlist')),
           );
-        } else if (state is AddToWishlistErrorState || state is RemoveFromWishlistErrorState) {
+        } else if (state is AddToWishlistErrorState ||
+            state is RemoveFromWishlistErrorState) {
           setState(() {
             isBookmarked = !isBookmarked;
-            
           });
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Failed to update Wishlist')),
@@ -99,7 +105,9 @@ class _BookdetailsViewState extends State<BookdetailsView>
                   isBookmarked ? Icons.bookmark : Icons.bookmark_add_outlined,
                   key: ValueKey<bool>(isBookmarked),
                   size: 30,
-                  color: isBookmarked ? AppColors.primaryColor : AppColors.darkScaffoldBg,
+                  color: isBookmarked
+                      ? AppColors.primaryColor
+                      : AppColors.darkScaffoldBg,
                 ),
               ),
               onPressed: toggleBookmark,
@@ -128,11 +136,14 @@ class _BookdetailsViewState extends State<BookdetailsView>
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: CachedNetworkImage(
-                            imageUrl: widget.product.image ?? 'https://placeholder.com/placeholder.png',
+                            imageUrl: widget.product.image ??
+                                'https://placeholder.com/placeholder.png',
                             height: 380,
                             fit: BoxFit.cover,
-                            placeholder: (context, url) => const CircularProgressIndicator(),
-                            errorWidget: (context, url, error) => const Icon(Icons.error),
+                            placeholder: (context, url) =>
+                                const CircularProgressIndicator(),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
                           ),
                         ),
                       ),
