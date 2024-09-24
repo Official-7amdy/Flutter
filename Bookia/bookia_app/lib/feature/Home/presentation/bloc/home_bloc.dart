@@ -12,6 +12,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<GetSliderEvent>(getSlider);
     add(GetSliderEvent());
     add(GetBestSellerEvent());
+    on<AddToWishlistEvent>(addToWishlist);
+    on<RemoveFromWishlistEvent>(removeFromWishlist);
   }
   BestSellerResponseModel? bestSellerResponseModel;
   SliderResponseModel? sliderResponseModel;
@@ -55,4 +57,41 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     
   }
+
+Future<void> addToWishlist(
+    AddToWishlistEvent event, Emitter<HomeState> emit) async {
+  emit(AddToWishlistLoadingState());
+
+  try {
+    bool? value = await HomeRepo.addToWishlist(productId: event.productId);
+    
+    if (value == true) {
+      emit(AddToWishlistLoadedState());
+    } else {
+      emit(AddToWishlistErrorState());
+    }
+  } catch (e) {
+    // Handle any exceptions that may occur during the asynchronous operation
+    emit(AddToWishlistErrorState());
+  }
+}
+
+ 
+Future<void> removeFromWishlist(
+    RemoveFromWishlistEvent event, Emitter<HomeState> emit) async {
+  emit(RemoveFromWishlistErrorState());
+
+  try {
+    bool? value = await HomeRepo.removeFromWishlist(productId: event.productId);
+    
+    if (value == true) {
+      emit(RemoveFromWishlistLoadedState());
+    } else {
+      emit(RemoveFromWishlistErrorState());
+    }
+  } catch (e) {
+    // Handle any exceptions that may occur during the asynchronous operation
+    emit(RemoveFromWishlistErrorState());
+  }
+}
 }

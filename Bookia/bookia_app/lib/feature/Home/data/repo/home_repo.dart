@@ -1,8 +1,10 @@
 import 'dart:developer';
+import 'dart:ffi';
 import 'package:bookia_app/core/Constants/constants.dart';
 import 'package:bookia_app/feature/Home/data/models/response/best_seller_response_model/best_seller_response_model.dart';
 import 'package:bookia_app/feature/Home/data/models/response/slider_response_model/slider_response_model.dart';
 import 'package:bookia_app/services/dio_provider.dart';
+import 'package:bookia_app/services/local_storage.dart';
 
 class HomeRepo {
   static Future<BestSellerResponseModel?> getBestSellerBooks() async {
@@ -41,5 +43,64 @@ class HomeRepo {
       return null;
     }
     return null;
+  }
+
+  
+  static Future<bool?> addToWishlist({
+    required int productId,
+  }) async {
+    // call api here
+    try {
+      var response =
+          await DioProvider.post(endpoint: AppConstants.addToWishlistEndpoint,
+          data: {
+            'product_id': productId
+            },
+             headers:{ "Authorization":
+            "Bearer ${LocalStorage.getData(key: LocalStorage.token)}"
+            }
+            
+          );
+      log("200 $response");
+
+      if (response.statusCode == 200) {
+       
+        return true;
+      }
+    } on Exception catch (e) {
+      log(e.toString());
+      return false;
+    }
+    return false;
+  }
+
+  
+  static Future<bool?> removeFromWishlist({
+    required int productId,
+  }) async {
+    // call api here
+    try {
+      var response =
+          await DioProvider.post(endpoint: AppConstants.removeFromWishlistEndpoint,
+          data: {
+            'product_id': productId
+            },
+            headers:{ "Authorization":
+            "Bearer ${LocalStorage.getData(key: LocalStorage.token)}"
+            }
+            
+
+          );
+      log("200 $response");
+
+      if (response.statusCode == 200) {
+       
+        return true;
+      }
+    } on Exception catch (e) {
+      log(e.toString());
+      return false;
+    }
+    return false;
   }
 }
