@@ -36,7 +36,8 @@ class _BookmarksViewState extends State<BookmarksView> {
         },
         builder: (context, state) {
           if (state is GetWishlistLoadedState) {
-            var wishlistBooks = context.read<HomeBloc>().getWishlistResponseModel?.data?.data;
+            var wishlistBooks =
+                context.read<HomeBloc>().getWishlistResponseModel?.data?.data;
 
             if (wishlistBooks == null || wishlistBooks.isEmpty) {
               // Display a message when the wishlist is empty
@@ -45,10 +46,8 @@ class _BookmarksViewState extends State<BookmarksView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Lottie.asset(AppAssets.empty, width: 300, height: 300),
-                     Text(
-                      'Your Wishlist is Empty',
-                      style: getSmallTitleTextStyle()
-                    ),
+                    Text('Your Wishlist is Empty',
+                        style: getSmallTitleTextStyle()),
                   ],
                 ),
               );
@@ -103,7 +102,9 @@ class _BookmarksViewState extends State<BookmarksView> {
                                     ),
                                     const SizedBox(height: 8),
                                     Text(
-                                      wishlistBooks[index].description.toString(),
+                                      wishlistBooks[index]
+                                          .description
+                                          .toString(),
                                       style: const TextStyle(
                                         fontSize: 14,
                                         color: Colors.grey,
@@ -117,7 +118,17 @@ class _BookmarksViewState extends State<BookmarksView> {
                                       children: [
                                         CustomButton(
                                           context,
-                                          onPressed: () {},
+                                          onPressed: () {
+                                              context .read<HomeBloc>()
+                              .add(AddToCartEvent(productId: wishlistBooks[index].id!));
+                              context.read<HomeBloc>().add(GetWishlistEvent());
+                          //add to cart
+                              ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Added To Cart Sucessfully'),backgroundColor: AppColors.primaryColor,),
+                            
+                          );
+                          
+                                          },
                                           text: 'Add To Cart',
                                           width: 200,
                                           hight: 40,
@@ -129,9 +140,9 @@ class _BookmarksViewState extends State<BookmarksView> {
                               ),
                               IconButton(
                                 onPressed: () {
-                                  context
-                                      .read<HomeBloc>()
-                                      .add(RemoveFromWishlistEvent(productId: wishlistBooks[index].id!));
+                                  context.read<HomeBloc>().add(
+                                      RemoveFromWishlistEvent(
+                                          productId: wishlistBooks[index].id!));
                                 },
                                 icon: const Icon(
                                   Icons.remove_circle_outline_rounded,

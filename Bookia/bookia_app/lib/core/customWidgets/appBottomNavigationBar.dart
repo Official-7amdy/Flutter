@@ -2,8 +2,8 @@ import 'package:bookia_app/core/utils/appColors.dart';
 import 'package:bookia_app/core/utils/assets.dart';
 import 'package:bookia_app/feature/Wishlist/presentation/View/bookmarks_view.dart';
 import 'package:bookia_app/feature/Home/presentation/Views/home_view.dart';
-import 'package:bookia_app/feature/category/presentation/views/category_view.dart';
-import 'package:bookia_app/feature/profile/profile_view.dart';
+import 'package:bookia_app/feature/cart/presentation/views/cart_view.dart';
+import 'package:bookia_app/feature/profile/presentation/view/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -21,15 +21,12 @@ class AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
   List<Widget> screens = [
     const HomeView(),
     const BookmarksView(),
-    const CategoryView(),
+    const CartView(),
     const ProfileView()
   ];
 
   @override
   Widget build(BuildContext context) {
-    Color activeColor = AppColors.primaryColor;
-    Color inactiveColor = AppColors.blackColor;
-
     return Scaffold(
         body: screens[currentIndex],
         bottomNavigationBar: BottomNavigationBar(

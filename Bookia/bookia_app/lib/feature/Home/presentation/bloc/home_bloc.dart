@@ -2,6 +2,7 @@ import 'package:bookia_app/feature/Home/data/models/response/best_seller_respons
 import 'package:bookia_app/feature/Home/data/models/response/slider_response_model/slider_response_model.dart';
 import 'package:bookia_app/feature/Home/data/repo/home_repo.dart';
 import 'package:bookia_app/feature/Wishlist/data/models/response/get_wishlist_response_model/get_wishlist_response_model.dart';
+import 'package:bookia_app/feature/cart/data/models/response/get_cart_response_model/get_cart_response_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'home_event.dart';
@@ -16,11 +17,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<AddToWishlistEvent>(addToWishlist);
     on<RemoveFromWishlistEvent>(removeFromWishlist);
     on<GetWishlistEvent>(getWishlist);
+    on<AddToCartEvent>(addToCart);
+    on<RemoveFromCartEvent>(removeFromCart);
+    on<UpdateCartEvent>(updateCart);
+    on<GetCartEvent>(getCart);
+
   }
   BestSellerResponseModel? bestSellerResponseModel;
   SliderResponseModel? sliderResponseModel;
   GetWishlistResponseModel? getWishlistResponseModel;
-
+  GetCartResponseModel? getCartResponseModel;
 
   Future<void> getBestSellerBooks(
       GetBestSellerEvent event, Emitter<HomeState> emit) async {
@@ -56,6 +62,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(SliderErrorState());
     }
   }
+
+  //Wishlist
 
   Future<void> addToWishlist(
       AddToWishlistEvent event, Emitter<HomeState> emit) async {
@@ -94,7 +102,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
   }
 
-  
   Future<void> getWishlist(
       GetWishlistEvent event, Emitter<HomeState> emit) async {
     emit(GetWishlistLoadingState());
@@ -110,6 +117,84 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     } catch (e) {
       // Handle any exceptions that may occur during the asynchronous operation
       emit(GetWishlistErrorState());
+    }
+  }
+
+
+  //Cart
+
+  Future<void> addToCart(
+      AddToCartEvent event, Emitter<HomeState> emit) async {
+    emit(AddToCartLoadingState());
+
+    try {
+      bool? value = await HomeRepo.addToCart(productId: event.productId);
+
+      if (value == true) {
+        emit(AddToCartLoadedState());
+      } else {
+        emit(AddToCartErrorState());
+      }
+    } catch (e) {
+      // Handle any exceptions that may occur during the asynchronous operation
+      emit(AddToCartErrorState());
+    }
+  }
+
+  Future<void> removeFromCart(
+      RemoveFromCartEvent event, Emitter<HomeState> emit) async {
+    emit(RemoveFromCartLoadingState());
+
+    try {
+      bool? value =
+          await HomeRepo.removeFromCart(productId: event.productId);
+
+      if (value == true) {
+        emit(RemoveFromCartLoadedState());
+      } else {
+        emit(RemoveFromCartErrorState());
+      }
+    } catch (e) {
+      // Handle any exceptions that may occur during the asynchronous operation
+      emit(RemoveFromCartErrorState());
+    }
+  }
+
+  
+  Future<void> updateCart(
+      UpdateCartEvent event, Emitter<HomeState> emit) async {
+    emit(UpdateCartLoadingState());
+
+    try {
+      bool? value =
+          await HomeRepo.updateCart(productId: event.productId, quantity: event.quantity);
+
+      if (value == true) {
+        emit(UpdateCartLoadedState());
+      } else {
+        emit(UpdateCartErrorState());
+      }
+    } catch (e) {
+      // Handle any exceptions that may occur during the asynchronous operation
+      emit(UpdateCartErrorState());
+    }
+  }
+
+  Future<void> getCart(
+      GetCartEvent event, Emitter<HomeState> emit) async {
+    emit(GetCartLoadingState());
+
+    try {
+      final value = await HomeRepo.getCart();
+      if (value != null) {
+        getCartResponseModel = value;
+        emit(GetCartLoadedState());
+      } else {
+        emit(GetCartErrorState());
+      }
+    } catch (e) {
+      // Handle any exceptions that may occur during the asynchronous operation
+      emit(GetCartErrorState());
     }
   }
 }

@@ -14,4 +14,13 @@ class AppConstants {
   static const addToWishlistEndpoint = '/add-to-wishlist';
   static const removeFromWishlistEndpoint = '/remove-from-wishlist';
   static const getWishlistEndpoint = '/wishlist';
+
+  //Cart
+  static const addToCartEndpoint = '/add-to-cart';
+  static const removeFromCartEndpoint = '/remove-from-cart';
+  static const updateCartEndpoint = '/update-cart';
+
+
+  static const getCartEndpoint = '/cart';
+
 }

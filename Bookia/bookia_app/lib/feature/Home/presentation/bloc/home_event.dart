@@ -17,8 +17,26 @@ class RemoveFromWishlistEvent extends HomeEvent {
   RemoveFromWishlistEvent({required this.productId});
 }
 
+class GetWishlistEvent extends HomeEvent {}
 
-class GetWishlistEvent extends HomeEvent {
 
+class AddToCartEvent extends HomeEvent {
+  final int productId;
 
+  AddToCartEvent({required this.productId});
 }
+
+class RemoveFromCartEvent extends HomeEvent {
+  final int productId;
+  RemoveFromCartEvent({required this.productId});
+}
+
+class UpdateCartEvent extends HomeEvent {
+  final int productId;
+ final dynamic quantity;
+
+  UpdateCartEvent( {required this.productId, required this. quantity});
+}
+
+class GetCartEvent extends HomeEvent {}
+
