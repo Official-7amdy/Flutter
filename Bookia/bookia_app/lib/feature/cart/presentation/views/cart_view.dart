@@ -29,15 +29,28 @@ class _CartViewState extends State<CartView> {
       appBar: cartAppbar(),
       body: BlocConsumer<HomeBloc, HomeState>(
         listener: (context, state) {
-          if (state is RemoveFromCartLoadedState||State is UpdateCartLoadedState) {
-            context.read<HomeBloc>().add(GetCartEvent());
-          }
+          if (state is RemoveFromCartLoadedState || state is UpdateCartLoadedState) {
+  context.read<HomeBloc>().add(GetCartEvent());
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: Text('Cart Updated Successfully'),
+      backgroundColor: AppColors.primaryColor,
+    ),
+  );
+}else if (state is UpdateCartErrorState){
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: Text('Something Went Wrong'),
+      backgroundColor: AppColors.redColor,
+    ));
+    context.read<HomeBloc>().add(GetCartEvent());
+}
+
         },
         builder: (context, state) {
           if (state is GetCartLoadedState) {
             var cartBooks = context.read<HomeBloc>().getCartResponseModel?.data?.cartItems;
             var totalPrice = context.read<HomeBloc>().getCartResponseModel?.data?.total ?? 0.0;
-            var itemCounts = context.read<HomeBloc>().getCartResponseModel?.data?.total??0;
 
             if (cartBooks == null || cartBooks.isEmpty) {
               return Center(
