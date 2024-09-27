@@ -26,8 +26,6 @@ class _BookdetailsViewState extends State<BookdetailsView>
   @override
   void initState() {
     super.initState();
-    
-    
 
     _controller = AnimationController(
       duration: const Duration(milliseconds: 300),
@@ -221,19 +219,16 @@ class _BookdetailsViewState extends State<BookdetailsView>
                         style: getSubDetailsButtonTextStyle(),
                         onPressed: () {
                           // Placeholder for Buy Now action
-                           
-                             context .read<HomeBloc>()
-                              .add(AddToCartEvent(productId: widget.product.id!));
-                          //add to cart
-                              ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Added To Cart Sucessfully'),backgroundColor: AppColors.primaryColor,),
-                          );
 
-                           
-                          
-                        
-                         
-                         
+                          context.read<HomeBloc>().add(
+                              AddToCartEvent(productId: widget.product.id!));
+                          //add to cart
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Added To Cart Sucessfully'),
+                              backgroundColor: AppColors.primaryColor,
+                            ),
+                          );
                         },
                       ),
                     ],

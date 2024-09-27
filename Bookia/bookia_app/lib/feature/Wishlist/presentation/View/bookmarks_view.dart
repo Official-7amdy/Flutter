@@ -30,14 +30,16 @@ class _BookmarksViewState extends State<BookmarksView> {
       appBar: bookmarkAppBar(),
       body: BlocConsumer<HomeBloc, HomeState>(
         listener: (context, state) {
-          if (state is RemoveFromWishlistLoadedState ) {
+          if (state is RemoveFromWishlistLoadedState) {
             context.read<HomeBloc>().add(GetWishlistEvent());
-          }else if(state is AddToCartLoadedState){
+          } else if (state is AddToCartLoadedState) {
             context.read<HomeBloc>().add(GetWishlistEvent());
-              ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Added To Cart Sucessfully'),backgroundColor: AppColors.primaryColor,),
-                            
-                          );
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Added To Cart Sucessfully'),
+                backgroundColor: AppColors.primaryColor,
+              ),
+            );
           }
         },
         builder: (context, state) {
@@ -49,13 +51,12 @@ class _BookmarksViewState extends State<BookmarksView> {
               // Display a message when the wishlist is empty
               return Center(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Lottie.asset(AppAssets.empty, width: 300, height: 300),
-                    Text('Your Wishlist is Empty',
-                        style: getSmallTitleTextStyle()),
-                  ]
-                ),
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Lottie.asset(AppAssets.empty, width: 300, height: 300),
+                      Text('Your Wishlist is Empty',
+                          style: getSmallTitleTextStyle()),
+                    ]),
               );
             }
 
@@ -125,11 +126,12 @@ class _BookmarksViewState extends State<BookmarksView> {
                                         CustomButton(
                                           context,
                                           onPressed: () {
-                                              context .read<HomeBloc>()
-                              .add(AddToCartEvent(productId: wishlistBooks[index].id!));
-                          //add to cart
-                            
-                          
+                                            context.read<HomeBloc>().add(
+                                                AddToCartEvent(
+                                                    productId:
+                                                        wishlistBooks[index]
+                                                            .id!));
+                                            //add to cart
                                           },
                                           text: 'Add To Cart',
                                           width: 200,

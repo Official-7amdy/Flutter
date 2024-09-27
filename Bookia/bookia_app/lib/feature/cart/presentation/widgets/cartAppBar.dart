@@ -9,7 +9,6 @@ AppBar cartAppbar() {
     title: Text(
       'Cart',
       style: getTitleTextStyle(),
-      
     ),
   );
 }

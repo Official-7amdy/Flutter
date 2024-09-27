@@ -5,6 +5,9 @@ class AppConstants {
 
   static const registerEndpoint = '/register';
   static const loginEndpoint = '/login';
+    static const logoutEndpoint = '/logout';
+
+
 
   //Home
   static const bestSellerEndpoint = '/products-bestseller';
@@ -20,7 +23,8 @@ class AppConstants {
   static const removeFromCartEndpoint = '/remove-from-cart';
   static const updateCartEndpoint = '/update-cart';
 
-
   static const getCartEndpoint = '/cart';
 
+  //Profile
+  static const getProfileEndpoint = '/profile';
 }

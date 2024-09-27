@@ -10,6 +10,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this.authRepo) : super(AuthInitial()) {
     on<RegisterEvent>(register);
     on<LoginEvent>(login);
+    on<LogoutEvent>(logout);
   }
 
   Future<void> register(RegisterEvent event, Emitter<AuthState> emit) async {
@@ -50,4 +51,26 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           "Error: ${e.toString()}")); // Emitting failure state
     }
   }
+
+  
+
+  Future<void> logout(
+      LogoutEvent event, Emitter<AuthState> emit) async {
+    emit(LogoutLoadingState());
+
+    try {
+      bool? value = await AuthRepo.logout();
+
+      if (value == true) {
+        emit(LogoutSuccessState());
+      } else {
+        emit(LogoutFailureState("Something went wrong"));
+      }
+    } catch (e) {
+      // Handle any exceptions that may occur during the asynchronous operation
+      emit(LogoutFailureState("Error: ${e.toString()}"));
+    }
+  }
+
 }
+

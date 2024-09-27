@@ -21,3 +21,14 @@ class LoginFailureState extends AuthState {
 
   LoginFailureState(this.errorMessage);
 }
+
+
+class LogoutLoadingState extends AuthState {}
+
+class LogoutSuccessState extends AuthState {}
+
+class LogoutFailureState extends AuthState {
+  final String errorMessage;
+
+  LogoutFailureState(this.errorMessage);
+}

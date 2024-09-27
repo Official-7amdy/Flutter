@@ -132,13 +132,20 @@ class _BookListState extends State<BookList> {
                                       text: 'Buy',
                                       onPressed: () {
                                         // Action on button press
-                                        context .read<HomeBloc>()
-                              .add(AddToCartEvent(productId:books![index].id??0));
-                          //add to cart
-                              ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Added To Cart Sucessfully'),backgroundColor: AppColors.primaryColor,),
-                          );
-
+                                        context.read<HomeBloc>().add(
+                                            AddToCartEvent(
+                                                productId:
+                                                    books![index].id ?? 0));
+                                        //add to cart
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                                'Added To Cart Sucessfully'),
+                                            backgroundColor:
+                                                AppColors.primaryColor,
+                                          ),
+                                        );
                                       },
                                     ),
                                   ],

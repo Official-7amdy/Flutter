@@ -4,6 +4,7 @@ import 'package:bookia_app/feature/Home/data/models/response/best_seller_respons
 import 'package:bookia_app/feature/Home/data/models/response/slider_response_model/slider_response_model.dart';
 import 'package:bookia_app/feature/Wishlist/data/models/response/get_wishlist_response_model/get_wishlist_response_model.dart';
 import 'package:bookia_app/feature/cart/data/models/response/get_cart_response_model/get_cart_response_model.dart';
+import 'package:bookia_app/feature/profile/data/models/response/get_profile_response_model/get_profile_response_model.dart';
 import 'package:bookia_app/services/dio_provider.dart';
 import 'package:bookia_app/services/local_storage.dart';
 
@@ -121,10 +122,8 @@ class HomeRepo {
     return null;
   }
 
-
   //Cart
 
-  
   static Future<bool?> addToCart({
     required int productId,
   }) async {
@@ -176,7 +175,7 @@ class HomeRepo {
     }
     return false;
   }
-  
+
   static Future<bool?> updateCart({
     required int productId,
     required dynamic quantity,
@@ -187,7 +186,7 @@ class HomeRepo {
           endpoint: AppConstants.updateCartEndpoint,
           data: {
             'cart_item_id': productId,
-            'quantity':quantity
+            'quantity': quantity
           },
           headers: {
             "Authorization":
@@ -227,4 +226,32 @@ class HomeRepo {
     }
     return null;
   }
+
+
+  
+//Profile
+
+  static Future<GetProfileResponseModel?> getProfile() async {
+    // call api here
+    try {
+      var response = await DioProvider.get(
+          endpoint: AppConstants.getProfileEndpoint,
+          headers: {
+            "Authorization":
+                "Bearer ${LocalStorage.getData(key: LocalStorage.token)}"
+          });
+      log("200 $response");
+
+      if (response.statusCode == 200) {
+        // ignore: non_constant_identifier_names
+        var Model = GetProfileResponseModel.fromJson(response.data);
+        return Model;
+      }
+    } on Exception catch (e) {
+      log(e.toString());
+      return null;
+    }
+    return null;
+  }
+
 }

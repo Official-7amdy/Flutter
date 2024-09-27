@@ -16,3 +16,7 @@ class LoginEvent extends AuthEvent {
   // Constructor only needs to accept the RegisterParams
   LoginEvent({required this.email, required this.password});
 }
+
+class LogoutEvent extends AuthEvent{
+  
+}

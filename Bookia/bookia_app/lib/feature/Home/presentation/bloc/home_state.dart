@@ -37,7 +37,6 @@ class GetWishlistLoadedState extends HomeState {}
 
 class GetWishlistErrorState extends HomeState {}
 
-
 //Cart
 class AddToCartLoadingState extends HomeState {}
 
@@ -45,11 +44,13 @@ class AddToCartLoadedState extends HomeState {}
 
 class AddToCartErrorState extends HomeState {}
 
+
 class RemoveFromCartLoadingState extends HomeState {}
 
 class RemoveFromCartLoadedState extends HomeState {}
 
 class RemoveFromCartErrorState extends HomeState {}
+
 
 class GetCartLoadingState extends HomeState {}
 
@@ -65,3 +66,9 @@ class UpdateCartLoadedState extends HomeState {}
 class UpdateCartErrorState extends HomeState {}
 
 
+//Profile
+class GetProfileLoadingState extends HomeState {}
+
+class GetProfileLoadedState extends HomeState {}
+
+class GetProfileErrorState extends HomeState {}
