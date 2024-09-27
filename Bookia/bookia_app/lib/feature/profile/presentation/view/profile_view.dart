@@ -1,12 +1,16 @@
 import 'package:bookia_app/core/customWidgets/sucessDialog.dart';
+import 'package:bookia_app/core/navigation.dart';
 import 'package:bookia_app/core/utils/appColors.dart';
 import 'package:bookia_app/core/utils/assets.dart';
 import 'package:bookia_app/core/utils/text_style.dart';
+import 'package:bookia_app/feature/Auth/presentation/Views/login_screen.dart';
 import 'package:bookia_app/feature/Auth/presentation/bloc/auth_bloc.dart';
 import 'package:bookia_app/feature/Auth/presentation/bloc/auth_event.dart';
 import 'package:bookia_app/feature/Auth/presentation/bloc/auth_state.dart';
 import 'package:bookia_app/feature/Home/presentation/bloc/home_bloc.dart';
 import 'package:bookia_app/feature/profile/presentation/widgets/profile_options.dart';
+import 'package:bookia_app/feature/welcome_screen.dart';
+import 'package:bookia_app/services/local_storage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +27,6 @@ class _ProfileViewState extends State<ProfileView> {
   void initState() {
     super.initState();
     context.read<HomeBloc>().add(GetProfileEvent());
-        context.read<AuthBloc>().add(LogoutEvent());
 
   }
   @override
@@ -36,7 +39,9 @@ class _ProfileViewState extends State<ProfileView> {
           IconButton(
             onPressed: () {
               // Add your logout logic here
-              context.read<AuthBloc>().add(LogoutEvent());
+               context.read<AuthBloc>().add(LogoutEvent());
+
+
 
             },
             icon: const Icon(
@@ -50,13 +55,25 @@ class _ProfileViewState extends State<ProfileView> {
         child: Center(
           child: BlocConsumer<HomeBloc, HomeState>(
             listener: (context, state) {
-              // TODO: implement listener (e.g., error handling)
               if (state is LogoutLoadingState){
                 // Show a loading indicator
                 showLoadingDialog(context: context);
-              }
+                }else if(state is LogoutSuccessState){       
+              pushAndRemoveUntil(context, const WelcomeScreen());
+              //Delete token from Cache
+              LocalStorage.deleteData(key: LocalStorage.token);
+
+                }else if(state is LogoutFailureState){
+                  // Handle other states
+                  // Show an error message
+                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('Something Went Wrong'),
+              backgroundColor: AppColors.redColor,
+            ));
+                  
+                }
              
-            },
+            } ,
             builder: (context, state) {
               var profile = context.read<HomeBloc>().getProfileResponseModel?.data;
 

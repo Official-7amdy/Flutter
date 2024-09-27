@@ -34,4 +34,9 @@ class LocalStorage {
   static dynamic getData({required String key}) {
     return _sharedPreferences.get(key);
   }
+
+  // Delete Data
+  static Future<void> deleteData({required String key}) async {
+    await _sharedPreferences.remove(key);
+    }
 }
