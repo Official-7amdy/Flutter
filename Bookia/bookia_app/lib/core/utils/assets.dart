@@ -7,6 +7,9 @@ class AppAssets {
   static const String loading = 'assets/animation/loading.json';
   static const String searching = 'assets/animation/searching.json';
   static const String empty = 'assets/animation/Empty.json';
+    static const String animatedError = 'assets/animation/errorAnimation.json';
+
+
 
 //Icons
   static const String appleIcon = 'assets/icons/apple.png';
@@ -18,9 +21,10 @@ class AppAssets {
   static const String bookmark = 'assets/icons/Bookmark.svg';
   static const String profile = 'assets/icons/Profile.svg';
   static const String category = 'assets/icons/Category.svg';
+  static const String logo = 'assets/icons/logo.svg';
+
 
 //Images
-  static const String logo = 'assets/images/logo.png';
   static const String welcomeBackground =
       'assets/images/welcome_background.png';
   static const String republic = 'assets/images/TheRepublic.jpeg';

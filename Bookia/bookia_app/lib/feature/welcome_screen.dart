@@ -5,6 +5,7 @@ import 'package:bookia_app/core/customWidgets/customButton.dart';
 import 'package:bookia_app/core/navigation.dart';
 import 'package:bookia_app/core/utils/text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -25,13 +26,14 @@ class WelcomeScreen extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Gap(150),
+            const Gap(200),
             Center(
-                child: Image.asset(
+                child: SvgPicture.asset(
               AppAssets.logo,
               fit: BoxFit.cover,
+              width: 250,
             )),
-            Text("Order Your Book Now!", style: getSmallTitleTextStyle()),
+           
           ],
         ),
         Center(

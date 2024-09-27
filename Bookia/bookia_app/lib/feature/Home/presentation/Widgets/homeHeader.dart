@@ -10,7 +10,7 @@ AppBar homeHeader() {
     elevation: 0, // Optional: Remove shadow to keep it flat
     title: Row(
       children: [
-        Image.asset(
+        SvgPicture.asset(
           AppAssets.logo,
           height: 40,
         ),

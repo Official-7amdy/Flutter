@@ -240,13 +240,13 @@ const Gap(50),
               ),
             );
           } else {
-            return Center(
-              child: SizedBox(
-                width: 300,
-                height: 300,
-                child: LottieBuilder.asset(AppAssets.searching),
-              ),
-            );
+            return   Center(
+      child: SizedBox(
+        width: 300,
+        height: 300,
+        child: LottieBuilder.asset(AppAssets.animatedError),
+      ),
+    );
           }
         },
       ),

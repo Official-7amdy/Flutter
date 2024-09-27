@@ -30,6 +30,16 @@ class _BookmarksViewState extends State<BookmarksView> {
       appBar: bookmarkAppBar(),
       body: BlocConsumer<HomeBloc, HomeState>(
         listener: (context, state) {
+          if (state is GetWishlistLoadingState) {
+             Center(
+      child: SizedBox(
+        width: 300,
+        height: 300,
+        child: LottieBuilder.asset(AppAssets.loading),
+      ),
+    );
+
+          }else
           if (state is RemoveFromWishlistLoadedState) {
             context.read<HomeBloc>().add(GetWishlistEvent());
           } else if (state is AddToCartLoadedState) {
@@ -43,6 +53,8 @@ class _BookmarksViewState extends State<BookmarksView> {
           }
         },
         builder: (context, state) {
+          
+          
           if (state is GetWishlistLoadedState) {
             var wishlistBooks =
                 context.read<HomeBloc>().getWishlistResponseModel?.data?.data;
@@ -165,14 +177,12 @@ class _BookmarksViewState extends State<BookmarksView> {
           } else {
             // Show a loading animation if the state is not loaded
             return Center(
-              child: SizedBox(
-                width: 300,
-                height: 300,
-                child: LottieBuilder.asset(
-                  AppAssets.searching,
-                ),
-              ),
-            );
+      child: SizedBox(
+        width: 300,
+        height: 300,
+        child: LottieBuilder.asset(AppAssets.animatedError),
+      ),
+    );
           }
         },
       ),

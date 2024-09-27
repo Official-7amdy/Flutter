@@ -1,8 +1,10 @@
 import 'package:bookia_app/core/customWidgets/appBottomNavigationBar.dart';
+import 'package:bookia_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:bookia_app/core/navigation.dart';
 import 'package:bookia_app/feature/welcome_screen.dart';
 import 'package:bookia_app/services/local_storage.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -34,9 +36,9 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/images/logo.png',
-              height: 120,
+            SvgPicture.asset(
+              AppAssets.logo,
+              height: 70,
             ),
             const SizedBox(height: 20),
           ],
