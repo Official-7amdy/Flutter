@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "531877078404",
+    "project_id": "se7ety-brandita-eg",
+    "storage_bucket": "se7ety-brandita-eg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531877078404:android:0d2096750e0b37c4d869d1",
+        "android_client_info": {
+          "package_name": "com.brandita.se7ety"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb-Aoad2Ix2IWQpReBYTTm9SrDaJgW3rM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
