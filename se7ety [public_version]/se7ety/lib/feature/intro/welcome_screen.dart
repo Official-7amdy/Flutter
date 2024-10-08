@@ -3,8 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:se7ety/core/enum/user_type_enum.dart';
 import 'package:se7ety/core/functions/navigation.dart';
 import 'package:se7ety/core/utils/text_style.dart';
-import 'package:se7ety/feature/auth/login_view.dart';
-
+import 'package:se7ety/feature/auth/presentation/pages/login_view.dart';
 import '../../core/utils/colors.dart';
 
 class WelcomeScreen extends StatelessWidget {

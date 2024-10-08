@@ -11,8 +11,7 @@ import 'package:se7ety/core/widgets/custom_button.dart';
 import 'package:se7ety/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:se7ety/feature/auth/presentation/bloc/auth_event.dart';
 import 'package:se7ety/feature/auth/presentation/bloc/auth_state.dart';
-import 'package:se7ety/feature/auth/presentation/page/login_view.dart';
-import 'package:se7ety/feature/patient/nav_bar.dart';
+import 'package:se7ety/feature/auth/presentation/pages/login_view.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key, required this.userType});
@@ -45,7 +44,10 @@ class _RegisterViewState extends State<RegisterView> {
           if (state is RegisterLoadingState) {
             showLoadingDialog(context);
           } else if (state is RegisterSuccessState) {
-            pushAndRemoveUntil(context, const PatientNavBarWidget());
+            //pop
+            Navigator.pop(context);
+            showSuccessDialog(context, 'تم التسجيل بنجاح');
+            //pushAndRemoveUntil(context, const PatientNavBarWidget());
           } else if (state is AuthErrorState) {
             Navigator.pop(context);
             showErrorDialog(context, state.error);
